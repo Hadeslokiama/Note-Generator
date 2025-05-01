@@ -68,11 +68,45 @@ function generateNote(type) {
   // Generate note format based on button type
   let note = "";
   if (type === "standard") {
-    note = `Standard Note\nContact Channel: ${contactChannel}\nANI: ${ani}\nSFDC Case No: ${sfdcCaseNo}\nCEP Number: ${cepNumber}\nBilling Account: ${billingAccount}\nCustomer Account: ${customerAccount}\nAccount Name: ${accountName}\nService ID: ${serviceId}\nIndustry Group: ${industryGroup}\nConcern: ${concern}\nReported By: ${reportedBy}\nAdditional Contact: ${additionalContact}\nWorking Permit: ${workingPermit}\nTelephone Status: ${telephoneStatus}\nONU Serial Number: ${onuSerialNumber}\nONU Light Status: ${onuLightStatus}\nParent Ticket Number: ${parentTicket}\nClearview Test Result: ${clearviewTestResult}\nRequired Action: ${requiredAction}\nFLM Troubleshooting: ${flmTroubleshooting}\nAdditional Remarks: ${additionalRemarks}`;
+    note = `Standard Note\n
+    Contact Channel: ${contactChannel}\n
+    ANI: ${ani}\n
+    SFDC Case No: ${sfdcCaseNo}\n
+    CEP Number: ${cepNumber}\n
+    Billing Account: ${billingAccount}\n
+    Customer Account: ${customerAccount}\n
+    Account Name: ${accountName}\n
+    Service ID: ${serviceId}\n
+    Industry Group: ${industryGroup}\n
+    Concern: ${concern}\n
+    Reported By: ${reportedBy}\n
+    Additional Contact: ${additionalContact}\n
+    Working Permit: ${workingPermit}\n
+    Telephone Status: ${telephoneStatus}\n
+    ONU Serial Number: ${onuSerialNumber}\n
+    ONU Light Status: ${onuLightStatus}\n
+    Parent Ticket Number: ${parentTicket}\n
+    Clearview Test Result: ${clearviewTestResult}\n
+    Required Action: ${requiredAction}\n
+    FLM Troubleshooting: ${flmTroubleshooting}\n
+    Additional Remarks: ${additionalRemarks}`;
   } else if (type === "cep") {
-    note = `CEP Note\nANI: ${ani}\nSFDC Case No: ${sfdcCaseNo}\nCEP Number: ${cepNumber}\nAccount Name: ${accountName}\nService ID: ${serviceId}\nReported By: ${reportedBy}\nTelephone Status: ${telephoneStatus}\nRequired Action: ${requiredAction}\nAdditional Remarks: ${additionalRemarks}`;
+    note = `CEP Note\nANI: ${ani}\n
+    SFDC Case No: ${sfdcCaseNo}\n
+    CEP Number: ${cepNumber}\n
+    Account Name: ${accountName}\n
+    Service ID: ${serviceId}\n
+    Reported By: ${reportedBy}\n
+    Telephone Status: ${telephoneStatus}\n
+    Required Action: ${requiredAction}\n
+    Additional Remarks: ${additionalRemarks}`;
   } else if (type === "description") {
-    note = `Description Note\nCustomer: ${accountName}\nService ID: ${serviceId}\nConcern: ${concern}\nAction Required: ${requiredAction}\nReport: ${additionalRemarks}`;
+    note = `Description Note\n
+    Customer: ${accountName}\n
+    Service ID: ${serviceId}\n
+    Concern: ${concern}\n
+    Action Required: ${requiredAction}\n
+    Report: ${additionalRemarks}`;
   }
 
   // Copy note to clipboard
