@@ -1,121 +1,337 @@
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta
-  author="Colin James Daradar, Neil Sumalinog, John Andrew Valenzuela, Sean Synooo"
-/>
-<meta
-  description="This website is for generating notes for social media and hotline purposes."/>
-<link rel="stylesheet" href="style.css" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-<title>Note Generator</title>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-  </body>
-</html>
-</head>
-<body>
-<header>
-    <h1 class="text-center">Note Generator</h1>
-</header>
-<h3>Select Team</h3>
-<select class="form-select form-select-sm mb-3" aria-label="Small select example">
-    <option selected>Select</option>
-    <option value="SocMed">Social Media</option>
-    <option value="2">Hotline</option>
-  </select>
-<form>
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">ANI</span>
-        <input type="text" class="form-control" placeholder="Case Number" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">SFDC Case No</span>
-        <input type="text" class="form-control" placeholder="0XXXXXXX" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">CEP Number</span>
-        <input type="text" class="form-control" placeholder="00000XXXXXX" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Billing Account</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Customer Account</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Account Name</span>
-        <input type="text" class="form-control" placeholder="Affected or Not" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Service ID</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Industry Group</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Concern</span>
-        <input type="text" class="form-control" placeholder="Issue" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Reported By</span>
-        <input type="text" class="form-control" placeholder="Name and Mobile" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Additional Contact Information</span>
-        <input type="text" class="form-control" placeholder="Person, Mobile, Email" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Working Permit</span>
-        <input type="text" class="form-control" placeholder="Affected or Not" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">ONU Serial Number</span>
-        <input type="text" class="form-control" placeholder="FHTTXXXXXXXXXX" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Telephone Status</span>
-        <input type="text" class="form-control" placeholder="Affected or Not" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">ONU Light Status</span>
-        <input type="text" class="form-control" placeholder="IDK" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Parent Ticket Number</span>
-        <input type="text" class="form-control" placeholder="00000XXXXXX" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Clearview Test Result</span>
-        <input type="text" class="form-control" aria-label="Username" placeholder="Username" aria-describedby="basic-addon1">
-      </div><div class="input-group mb-3">
-        <span class="input-group-text">FLM Troubleshooting</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-      </div>
-    <div class="input-group mb-3">
-        <span class="input-group-text">Additional Remarks</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-      </div>
-</form>
-</body>
-<section>
-    <br>
-<button type="button" class="btn btn-primary btn-lg"> Standard Note </button>
-<button type="button" class="btn btn-primary btn-lg"> CEP Note </button>
-<button type="button" class="btn btn-primary btn-lg"> Description Note </button>
-<button type="button" class="btn btn-primary btn-lg"> Reset </button>    
-</section>
-<Footer>
-    <br>
-    <p>Note Generator</p>
-    <p>Version 1.0</p>
-    <p>Copyright © 2025 Colin James Daradar</p>
-    <p>All rights reserved.</p>
-</Footer>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Colin James Daradar" />
+    <meta
+      name="description"
+      content="This website is for generating notes for social media and hotline purposes."
+    />
 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Note Generator</title>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="text-center fw-bold">Note Generator</h1>
+    </header>
+    <div class="container text-center mb-4" id="disclaimer">
+      <p class="text-center">
+        This website is for generating notes for social media and hotline
+        purposes.
+      </p>
+      <p class="text-center">
+        Please fill out the form below to generate your note. Input N/A for
+        details unable to acquire from the customer.
+      </p>
+    </div>
+    <section>
+      <form>
+        <!-- Contact Channel Selection -->
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Contact Channel - Vendor</span
+          >
+          <select
+            class="form-select"
+            aria-label="Working Permit"
+            aria-describedby="basic-addon1"
+          >
+            <option selected disabled>Select</option>
+            <option value="SocialMedia">Social Media - CND</option>
+            <option value="Hotline">Hotline - CND</option>
+            <option value="BOH">BOH - CND</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1">ANI</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Case Number"
+            aria-label="ANI"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >SFDC Case No</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="XXXXXXXX"
+            aria-label="SFDCCaseNo"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >CEP Number</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="00000XXXXXX"
+            aria-label="CEPNumber"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Billing Account</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="BA"
+            aria-label="BA"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Customer Account</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="CRM"
+            aria-label="CRM"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Account Name</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Company Name"
+            aria-label="AccountName"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Service ID</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Direct or DSL"
+            aria-label="ServiceID"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Industry Group</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Industry Group"
+            aria-label="IndustryGroup"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Concern</span>
+          <textarea class="form-control" aria-label="Concern"></textarea>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Reported By</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name and Mobile"
+            aria-label="ReportedBy"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Additional Contact Information</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Person, Mobile, Email"
+            aria-label="AdditionalContactInformation"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Working Permit</span
+          >
+          <select
+            class="form-select"
+            aria-label="WorkingPermit"
+            aria-describedby="basic-addon1"
+          >
+            <option selected disabled>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="N/A">N/A</option>
+            <option value="Verification">For Verfication</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Telephone Status</span
+          >
+          <select
+            class="form-select"
+            aria-label="TelephoneStatus"
+            aria-describedby="basic-addon1"
+          >
+            <option selected disabled>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="N/A">N/A</option>
+            <option value="Verification">For Verfication</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >ONU Serial Number</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="FHTTXXXXXXXXXX"
+            aria-label="SerialNumber"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >ONU Light Status</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Status"
+            aria-label="LightStatus"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Parent Ticket Number</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            placeholder="00000XXXXXX"
+            aria-label="PTNumber"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Clearview Test Result</span
+          >
+          <input
+            type="text"
+            class="form-control"
+            aria-label="TestResult"
+            placeholder="Result"
+            aria-describedby="basic-addon1"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold" id="basic-addon1"
+            >Required Action</span
+          >
+          <select
+            class="form-select"
+            aria-label="RequiredAction"
+            aria-describedby="basic-addon1"
+          >
+            <option selected disabled>Select</option>
+            <option value="InsideCheck">
+              Dispatched to Technician for Inside Checking
+            </option>
+            <option value="OutsideCheck">
+              Dispatched to Technician for Outside Checking
+            </option>
+            <option value="IMCheck">For IM Checking</option>
+            <option value="FCR">For FCR Checking</option>
+            <option value="NetworkCheck">For Network Checking</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">FLM Troubleshooting</span>
+          <textarea
+            class="form-control"
+            aria-label="FLMTroubleshooting"
+          ></textarea>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Additional Remarks</span>
+          <textarea
+            class="form-control"
+            aria-label="AdditionalRemarks"
+          ></textarea>
+        </div>
+      </form>
+      <div class="d-flex justify-content-center gap-5 mt-5 flex-wrap">
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          onclick="generateNote('standard')"
+        >
+          Standard Note
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          onclick="generateNote('cep')"
+        >
+          CEP Note
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          onclick="generateNote('description')"
+        >
+          Description Note
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          onclick="resetForm()"
+        >
+          Reset
+        </button>
+      </div>
+    </section>
+    <footer>
+      <br />
+      <p>Note Generator</p>
+      <p>Version 1.0</p>
+      <p>Copyright © 2025 Colin James Daradar</p>
+      <p>All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
