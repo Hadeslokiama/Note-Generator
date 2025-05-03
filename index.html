@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,7 +15,7 @@
       integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <title>Note Generator</title>
 
@@ -29,243 +30,548 @@
       <h1 class="text-center fw-bold">Note Generator</h1>
     </header>
     <div class="container text-center mb-4" id="disclaimer">
-      <p class="text-center">
-        This website is for generating notes for social media, BOH, and hotline.
-      </p>
-      <p class="text-center">
-        Fill out the form below to generate your note. Input N/A for
-        details unable to acquire from the customer.
+      <p>
+        This website is for generating notes. Fill out the form below to
+        generate your note. All fields with * are required to be filled out and
+        put N/A for details unable to acquire from the customer.
       </p>
     </div>
+
     <section>
-      <form>
-        <!-- Contact Channel Selection -->
+      <!-- Contact Channel Selection -->
+      <div class="input-group mb-3">
+        <span class="input-group-text fw-bold" id="basic-addon1"
+          >Contact Channel - Vendor</span
+        >
+        <select
+          class="form-select"
+          id="contactChannel"
+          required
+          aria-describedby="basic-addon1"
+          onchange="toggleFormSections()"
+        >
+          <option value="" selected>Select Contact Channel</option>
+          <option value="Social Media - CND">Social Media - CND</option>
+          <option value="Hotline - CND">Hotline - CND</option>
+          <option value="BOH - CND">BOH - CND</option>
+        </select>
+      </div>
+      <!-- SOCMED Channel Selection -->
+      <div id="socialMediaForm" class="contactForm" style="display: none">
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Contact Channel - Vendor</span
+          <span class="input-group-text fw-bold"
+            >Case Number
+            <div class="required-asterisk">*</div></span
           >
-          <select
-            class="form-select"
-            aria-label="Working Permit"
-            aria-describedby="basic-addon1"
-          >
-            <option selected disabled>Select</option>
-            <option value="SocialMedia">Social Media - CND</option>
-            <option value="Hotline">Hotline - CND</option>
-            <option value="BOH">BOH - CND</option>
-          </select>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1">Case Number</span>
           <input
             type="text"
             class="form-control"
+            id="caseNumberSM"
             placeholder="ANI"
-            aria-label="CaseNumber"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >SFDC Case No</span
+          <span class="input-group-text fw-bold"
+            >SFDC Case No
+            <div class="required-asterisk">*</div></span
           >
           <input
             type="text"
             class="form-control"
+            id="sfdcCaseNoSM"
             placeholder="XXXXXXXX"
-            aria-label="SFDCCaseNo"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >CEP Number</span
+          <span class="input-group-text fw-bold"
+            >Received thru Enterprise SocMed Dated
+            <div class="required-asterisk">*</div></span
           >
           <input
             type="text"
             class="form-control"
+            id="receivedDateSM"
+            placeholder="XX/XX/XXXX, XX:XX:XX XM"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >From
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="fromSM"
+            placeholder="John Doe"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >CEP Number
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="cepNumberSM"
             placeholder="00000XXXXXX"
-            aria-label="CEPNumber"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Billing Account</span
+          <span class="input-group-text fw-bold"
+            >Billing Account
+            <div class="required-asterisk">*</div></span
           >
           <input
             type="text"
             class="form-control"
+            id="billingAccountSM"
             placeholder="BA"
-            aria-label="BA"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Customer Account</span
+          <span class="input-group-text fw-bold"
+            >Customer Account
+            <div class="required-asterisk">*</div></span
           >
           <input
             type="text"
             class="form-control"
+            id="customerAccountSM"
             placeholder="CRM"
-            aria-label="CRM"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Account Name</span
+          <span class="input-group-text fw-bold"
+            >Account Name
+            <div class="required-asterisk">*</div></span
           >
           <input
             type="text"
             class="form-control"
+            id="accountNameSM"
             placeholder="Company Name"
-            aria-label="AccountName"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Service ID</span
+          <span class="input-group-text fw-bold"
+            >Service ID
+            <div class="required-asterisk">*</div></span
           >
           <input
             type="text"
             class="form-control"
-            placeholder="Direct or DSL"
-            aria-label="ServiceID"
-            aria-describedby="basic-addon1"
+            id="serviceIdSM"
+            placeholder="Telephone Number or ADSL ID"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Industry Group</span
+          <span class="input-group-text fw-bold"
+            >Industry Group
+            <div class="required-asterisk">*</div></span
+          >
+          <select class="form-select" id="industryGroupSM">
+            <option selected disabled>Select</option>
+            <option value="Home">Home</option>
+            <option value="SMBIZ">SMBIZ</option>
+            <option value="OneLuz">One Luzon</option>
+            <option value="OneVis">One Visayas</option>
+            <option value="OneMin">One Mindanao</option>
+            <option value="BPO">BPO</option>
+            <option value="Conglo1">Conglo 1</option>
+            <option value="Conglo2">Conglo 2</option>
+            <option value="LGU">LGU (Public Sector)</option>
+            <option value="NGU">NGU (Public Sector)</option>
+            <option value="FMCG">Commercial Market (FMCG)</option>
+            <option value="Carrier/A2P">Carrier/A2P</option>
+            <option value="APAC">APAC</option>
+            <option value="A/EMEA/PGC">A/EMEA/PGC</option>
+            <option value="BFSI">BFSI (Banking)</option>
+            <option value="S&A/SDS/CSAM">S&A/SDS/CSAM</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Concern
+            <div class="required-asterisk">*</div></span
+          >
+          <textarea class="form-control" id="concernSM"></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Reported By
+            </span
           >
           <input
             type="text"
             class="form-control"
-            placeholder="Industry Group"
-            aria-label="IndustryGroup"
-            aria-describedby="basic-addon1"
+            id="reportedBySM"
+            placeholder="Name and Phone"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Concern</span>
-          <textarea class="form-control" aria-label="Concern"></textarea>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Reported By</span
+          <span class="input-group-text fw-bold"
+            >Additional Contact Information
+            </span
           >
           <input
             type="text"
             class="form-control"
-            placeholder="Name and Mobile"
-            aria-label="ReportedBy"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Additional Contact Information</span
-          >
-          <input
-            type="text"
-            class="form-control"
+            id="additionalContactSM"
             placeholder="Person, Mobile, Email"
-            aria-label="AdditionalContactInformation"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Working Permit</span
-          >
-          <select
-            class="form-select"
-            aria-label="WorkingPermit"
-            aria-describedby="basic-addon1"
-          >
-            <option selected disabled>Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-            <option value="N/A">N/A</option>
-            <option value="For Verification">For Verfication</option>
-          </select>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Telephone Status</span
-          >
-          <select
-            class="form-select"
-            aria-label="TelephoneStatus"
-            aria-describedby="basic-addon1"
-          >
-            <option selected disabled>Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-            <option value="N/A">N/A</option>
-            <option value="For Verification">For Verfication</option>
-          </select>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >ONU Serial Number</span
+          <span class="input-group-text fw-bold"
+            >Availability Day and Time
+            </span
           >
           <input
             type="text"
             class="form-control"
+            id="availabilitySM"
+            placeholder="Mon-Fri 8am-5pm"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Working Permit
+            </span
+          >
+          <select class="form-select" id="workingPermitSM">
+            <option selected disabled>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="N/A">N/A</option>
+            <option value="For Verification">For Verification</option>
+          </select>
+        </div>
+        <!--
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >ONU Serial Number
+            </span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="onuSerialSM"
             placeholder="FHTTXXXXXXXXXX"
-            aria-label="SerialNumber"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >ONU Light Status</span
+          <span class="input-group-text fw-bold"
+            >ONU Light Status
+            </span
           >
           <input
             type="text"
             class="form-control"
+            id="onuStatusSM"
             placeholder="Status"
-            aria-label="LightStatus"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Parent Ticket Number</span
-          >
+          <span class="input-group-text fw-bold">Parent Ticket Number</span>
           <input
             type="text"
             class="form-control"
+            id="parentTicketSM"
             placeholder="00000XXXXXX"
-            aria-label="PTNumber"
-            aria-describedby="basic-addon1"
           />
         </div>
+      -->
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Clearview Test Result</span
+          <span class="input-group-text fw-bold"
+            >Clearview Test Result
+            </span
           >
           <input
             type="text"
             class="form-control"
-            aria-label="TestResult"
+            id="testResultSM"
             placeholder="Result"
-            aria-describedby="basic-addon1"
           />
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold" id="basic-addon1"
-            >Required Action</span
+          <span class="input-group-text fw-bold">Required Action</span>
+          <select class="form-select" id="requiredActionSM">
+            <option selected disabled>Select</option>
+            <option value="Dispatched to Technician for Inside Checking">
+              Dispatched to Technician for Inside Checking
+            </option>
+            <option value="Dispatched to Technician for Outside Checking">
+              Dispatched to Technician for Outside Checking
+            </option>
+            <option value="Action Required L2">Action Required L2</option>
+            <option value="For FCR Checking">For FCR Checking</option>
+            <option value="For Network Checking">For Network Checking</option>
+            <option value="N/A">N/A</option>
+          </select>
+        </div>
+
+        <!---
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">FLM Troubleshooting</span>
+          <textarea class="form-control" id="flmSM"></textarea>
+        </div>
+        --->
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Action Taken</span>
+          <textarea class="form-control" id="actionTakenSM"></textarea>
+        </div>
+      </div>
+      <!-- Hotline Channel Selection -->
+      <div id="hotlineForm" class="contactForm" style="display: none">
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Case Number
+            <div class="required-asterisk">*</div></span
           >
-          <select
-            class="form-select"
-            aria-label="RequiredAction"
-            aria-describedby="basic-addon1"
+          <input
+            type="text"
+            class="form-control"
+            id="caseNumberHL"
+            placeholder="ANI"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >SFDC Case No
+            <div class="required-asterisk">*</div></span
           >
+          <input
+            type="text"
+            class="form-control"
+            id="sfdcCaseNoHL"
+            placeholder="XXXXXXXX"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >CEP Number
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="cepNumberHL"
+            placeholder="00000XXXXXX"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Billing Account
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="billingAccountHL"
+            placeholder="BA"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Customer Account
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="customerAccountHL"
+            placeholder="CRM"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Account Name
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="accountNameHL"
+            placeholder="Company Name"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Service ID
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="serviceIdHL"
+            placeholder="Telephone Number or ADSL ID"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Industry Group
+            <div class="required-asterisk">*</div></span
+          >
+          <select class="form-select" id="industryGroupHL">
+            <option selected disabled>Select</option>
+            <option value="Home">Home</option>
+            <option value="SMBIZ">SMBIZ</option>
+            <option value="OneLuz">One Luzon</option>
+            <option value="OneVis">One Visayas</option>
+            <option value="OneMin">One Mindanao</option>
+            <option value="BPO">BPO</option>
+            <option value="Conglo1">Conglo 1</option>
+            <option value="Conglo2">Conglo 2</option>
+            <option value="LGU">LGU (Public Sector)</option>
+            <option value="NGU">NGU (Public Sector)</option>
+            <option value="FMCG">Commercial Market (FMCG)</option>
+            <option value="Carrier/A2P">Carrier/A2P</option>
+            <option value="APAC">APAC</option>
+            <option value="A/EMEA/PGC">A/EMEA/PGC</option>
+            <option value="BFSI">BFSI (Banking)</option>
+            <option value="S&A/SDS/CSAM">S&A/SDS/CSAM</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Concern
+            <div class="required-asterisk">*</div></span
+          >
+          <textarea class="form-control" id="concernHL"></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Reported By
+            </span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="reportedByHL"
+            placeholder="Name and Phone"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Additional Contact Information
+            </span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="additionalContactHL"
+            placeholder="Person, Mobile, Email"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Availability Day and Time
+            </span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="availabilityHL"
+            placeholder="Mon-Fri 8am-5pm"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Working Permit
+            </span
+          >
+          <select class="form-select" id="workingPermitHL">
+            <option selected disabled>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="N/A">N/A</option>
+            <option value="For Verification">For Verification</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >ONU Serial Number
+            </span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="onuSerialHL"
+            placeholder="FHTTXXXXXXXXXX"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >ONU Light Status
+            </span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="onuStatusHL"
+            placeholder="Status"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Parent Ticket Number</span>
+          <input
+            type="text"
+            class="form-control"
+            id="parentTicketHL"
+            placeholder="00000XXXXXX"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Clearview Test Result
+            </span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="testResultHL"
+            placeholder="Result"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Required Action</span>
+          <select class="form-select" id="requiredActionHL">
             <option selected disabled>Select</option>
             <option value="Dispatched to Technician for Inside Checking">
               Dispatched to Technician for Inside Checking
@@ -278,40 +584,103 @@
             <option value="For Network Checking">For Network Checking</option>
           </select>
         </div>
+
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">FLM Troubleshooting</span>
-          <textarea
-            class="form-control"
-            aria-label="FLMTroubleshooting"
-          ></textarea>
+          <textarea class="form-control" id="flmHL"></textarea>
         </div>
+
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Additional Remarks</span>
-          <textarea
-            class="form-control"
-            aria-label="AdditionalRemarks"
-          ></textarea>
+          <span class="input-group-text fw-bold">Action Taken</span>
+          <textarea class="form-control" id="actionTakenHL"></textarea>
         </div>
-      </form>
+      </div>
+      <!-- BOH Channel Selection -->
+      <div id="bohForm" class="contactForm" style="display: none">
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">
+            Billing Account
+            <div class="required-asterisk">*</div>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            id="billingAccountBoh"
+            placeholder="BA"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">
+            Customer Account
+            <div class="required-asterisk">*</div>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            id="customerAccountBoh"
+            placeholder="CRM"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">
+            Account Name
+            <div class="required-asterisk">*</div>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            id="accountNameBoh"
+            placeholder="Company Name"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">
+            Service ID
+            <div class="required-asterisk">*</div>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            id="serviceIdBoh"
+            placeholder="Telephone Number or ADSL ID"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Concern
+            <div class="required-asterisk">*</div></span
+          >
+          <textarea class="form-control" id="concernBoh"></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Action Taken</span>
+          <textarea class="form-control" id="actionTakenBoh"></textarea>
+        </div>
+      </div>
       <div class="d-flex justify-content-center gap-5 mt-5 flex-wrap">
         <button
           type="button"
           class="btn btn-primary btn-lg"
-          onclick="generateNote('standard')"
+          onclick="console.log('Standard Note Button Clicked'); generateNote('standard')"
         >
           Standard Note
         </button>
         <button
           type="button"
           class="btn btn-primary btn-lg"
-          onclick="generateNote('cep')"
+          onclick="console.log('CEP Note Button Clicked'); generateNote('cep')"
         >
           CEP Note
         </button>
         <button
           type="button"
           class="btn btn-primary btn-lg"
-          onclick="generateNote('description')"
+          onclick="console.log('Description Note Button Clicked'); generateNote('description')"
         >
           Description Note
         </button>
@@ -324,6 +693,7 @@
         </button>
       </div>
     </section>
+
     <footer>
       <br />
       <p>Note Generator</p>
@@ -331,6 +701,7 @@
       <p>Copyright © 2025 Colin James Daradar</p>
       <p>All rights reserved.</p>
     </footer>
+    <div id="alert" style="display: none"></div>
     <script src="script.js"></script>
   </body>
 </html>
