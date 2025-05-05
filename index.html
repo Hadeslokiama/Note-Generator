@@ -84,6 +84,20 @@
           />
         </div>
 
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >CEP Number
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="cepNumberSM"
+            placeholder="00000XXXXXX"
+          />
+        </div>
+
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold"
             >Received thru Enterprise SocMed Dated
@@ -107,19 +121,6 @@
             class="form-control"
             id="fromSM"
             placeholder="John Doe"
-          />
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-text fw-bold"
-            >CEP Number
-            <div class="required-asterisk">*</div></span
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="cepNumberSM"
-            placeholder="00000XXXXXX"
           />
         </div>
 
@@ -226,6 +227,8 @@
               <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
               <select class="form-select" id="subcategorySM-NonVoc">
                 <option value="" disabled selected>Select Subcategory</option>
+                <option>N/A</option>
+                <option>Non Actionable</option>
                 <option>Home Concerns</option>
                 <option>Smart Concerns</option>
                 <option>164 / Bantay Cable</option>
@@ -399,20 +402,53 @@
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Reported By </span>
+          <span class="input-group-text fw-bold">Contact Person </span>
           <input
             type="text"
             class="form-control"
-            id="reportedBySM"
+            id="contactPerSM"
             placeholder="Name and Phone"
           />
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold"
-            >Additional Contact
-          </span>
-          <textarea class="form-control" id="additionalContactSM" placeholder="Person, Mobile, Email"></textarea>
+          <span class="input-group-text fw-bold">Contact Number </span>
+          <input
+            type="text"
+            class="form-control"
+            id="contactNumSM"
+            placeholder="Name and Phone"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Email Address </span>
+          <input
+            type="text"
+            class="form-control"
+            id="emailAddressSM"
+            placeholder="Name and Phone"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Additional Onsite Contact Person </span>
+          <input
+            type="text"
+            class="form-control"
+            id="aOCPSM"
+            placeholder="Name and Phone"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Additional Onsite Contact Number </span>
+          <input
+            type="text"
+            class="form-control"
+            id="aOCNSM"
+            placeholder="Name and Phone"
+          />
         </div>
 
         <div class="input-group mb-3">
@@ -437,7 +473,7 @@
             <option value="For Verification">For Verification</option>
           </select>
         </div>
-        <!--
+
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold"
             >ONU Serial Number
@@ -473,7 +509,7 @@
             placeholder="00000XXXXXX"
           />
         </div>
-      -->
+
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Clearview Test Result </span>
           <input
@@ -501,12 +537,11 @@
           </select>
         </div>
 
-        <!---
+        
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">FLM Troubleshooting</span>
           <textarea class="form-control" id="flmSM"></textarea>
         </div>
-        --->
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Action</span>
@@ -657,6 +692,8 @@
               <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
               <select class="form-select" id="subcategoryHL-NonVoc">
                 <option value="" disabled selected>Select Subcategory</option>
+                <option>N/A</option>
+                <option>Non Actionable</option>
                 <option>Home Concerns</option>
                 <option>Smart Concerns</option>
                 <option>164 / Bantay Cable</option>
@@ -835,20 +872,53 @@
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Reported By </span>
+          <span class="input-group-text fw-bold">Contact Person </span>
           <input
             type="text"
             class="form-control"
-            id="reportedByHL"
+            id="contactPerHL"
             placeholder="Name and Phone"
           />
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold"
-            >Additional Contact
-          </span>
-          <textarea class="form-control" id="additionalContactHL" placeholder="Person, Mobile, Email"></textarea>
+          <span class="input-group-text fw-bold">Contact Number </span>
+          <input
+            type="text"
+            class="form-control"
+            id="contactNumHL"
+            placeholder="Name and Phone"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Email Address </span>
+          <input
+            type="text"
+            class="form-control"
+            id="emailAddressHL"
+            placeholder="Name and Phone"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Additional Onsite Contact Person </span>
+          <input
+            type="text"
+            class="form-control"
+            id="aOCPHL"
+            placeholder="Name and Phone"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Additional Onsite Contact Number </span>
+          <input
+            type="text"
+            class="form-control"
+            id="aOCNHL"
+            placeholder="Name and Phone"
+          />
         </div>
 
         <div class="input-group mb-3">
@@ -1019,6 +1089,8 @@
               <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
               <select class="form-select" id="subcategoryBoh-NonVoc">
                 <option value="" disabled selected>Select Subcategory</option>
+                <option>N/A</option>
+                <option>Non Actionable</option>
                 <option>Home Concerns</option>
                 <option>Smart Concerns</option>
                 <option>164 / Bantay Cable</option>
@@ -1192,8 +1264,8 @@
         </div>        
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Additional Remarks</span>
-          <textarea class="form-control" id="additionalBoh"></textarea>
+          <span class="input-group-text fw-bold">Action</span>
+          <textarea class="form-control" id="actionTakenBoh"></textarea>
         </div>
       </div>
       <div class="d-flex justify-content-center gap-5 mt-5 flex-wrap">
