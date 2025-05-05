@@ -163,8 +163,11 @@ function generateNote(type) {
       concernSM = concernSMMain;
     }
 
-    const reportedBySM = document.getElementById("reportedBySM")?.value || "";
-    const additionalContactSM = document.getElementById("additionalContactSM")?.value || "";
+    const contactPerSM = document.getElementById("contactPerSM")?.value || "";
+    const contactNumSM = document.getElementById("contactNumSM")?.value || "";
+    const emailAddressSM = document.getElementById("emailAddressSM")?.value || "";
+    const aOCPSM = document.getElementById("aOCPSM")?.value || "";
+    const aOCNSM = document.getElementById("aOCNSM")?.value || "";
     const availabilitySM = document.getElementById("availabilitySM")?.value || "";
     const workingPermitSM = document.getElementById("workingPermitSM")?.value || "";
     const clearviewTestResultSM = document.getElementById("testResultSM")?.value || "";
@@ -173,9 +176,9 @@ function generateNote(type) {
     if (type === "standard") {
       note = `ANI: ${aniSM}\nSFDC Case No: ${sfdcCaseNoSM}\nCEP Number: ${cepNumberSM}\nReceived thru Enterprise SocMed Dated: ${receivedDateSM}\nFrom: ${fromSM}\nCustomer Account: ${customerAccountSM}\nBilling Account: ${billingAccountSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nIndustry Group: ${industryGroupSM}\nConcern: ${concernSM}\nAction: ${actionSM}`;
     } else if (type === "cep") {
-      note = `CONTACT CHANNEL-VENDOR: ${contactChannelSM}\nSFDC CASE NO: ${sfdcCaseNoSM}\nADDITIONAL CONTACT PERSON, NUMBER, AND EMAIL: ${additionalContactSM}\nWORKING PERMIT: ${workingPermitSM}\nAVAILABILITY DAY AND TIME: ${availabilitySM}\nCLEARVIEW TEST RESULT: ${clearviewTestResultSM}\nCOMPLAINT/WOCAS: ${concernSM}\nACTION: ${actionSM}`;
+      note = `CONTACT CHANNEL-VENDOR: ${contactChannelSM}\nSFDC CASE NO: ${sfdcCaseNoSM}\nAdditional CONTACT PERSON: ${aOCPSM}\nAdditional CONTACT NUMBER: ${aOCNSM}\nWORKING PERMIT: ${workingPermitSM}\nAVAILABILITY DAY AND TIME: ${availabilitySM}\nCLEARVIEW TEST RESULT: ${clearviewTestResultSM}\nCOMPLAINT/WOCAS: ${wocasSM}\nREQUIRED ACTION: ${requiredActionSM}\nONU SERIAL NUMBER: ${onuSerialSM}\nONU LIGHT STATUS: ${onuStatusSM}\nFLM TROUBLESHOOTING: ${flmSM}\nPARENT TICKET: ${parentTicketSM}\nACTION: ${actionSM}`;
     } else if (type === "description") {
-      note = `Concern: ${concernSM}\nReported By Contact Person and Phone: ${reportedBySM}\nAdditional Contact Person, Number, Email: ${additionalContactSM}\nWorking Permit: ${workingPermitSM}\nAvailability Day and Time: ${availabilitySM}`;
+      note = `Contact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nEmail Address: ${emailAddressSM}\nAdditional Onsite Contact Person: ${aOCPSM}\nAdditional Onsite Contact Number: ${aOCNSM}\nAvailability Day and Time: ${availabilitySM}\nWorking Permit: ${workingPermitSM}`;
     }
   } else if (channel === "HOTLINE - CND") {
     const contactChannelHL = channel;
@@ -204,19 +207,27 @@ function generateNote(type) {
     }
     
     const wocasHL = document.getElementById("wocasHL")?.value || "";
-    const reportedByHL = document.getElementById("reportedByHL")?.value || "";
-    const additionalContactHL = document.getElementById("additionalContactHL")?.value || "";
+    const contactPerHL = document.getElementById("contactPerHL")?.value || "";
+    const contactNumHL = document.getElementById("contactNumHL")?.value || "";
+    const emailAddressHL = document.getElementById("emailAddressHL")?.value || "";
+    const aOCPHL = document.getElementById("aOCPHL")?.value || "";
+    const aOCNHL = document.getElementById("aOCNHL")?.value || "";
     const availabilityHL = document.getElementById("availabilityHL")?.value || "";
     const workingPermitHL = document.getElementById("workingPermitHL")?.value || "";
+    const requiredActionHL = document.getElementById("requiredActionHL")?.value || "";
+    const onuSerialHL = document.getElementById("onuSerialHL")?.value || "";
+    const onuStatusHL = document.getElementById("onuStatusHL")?.value || "";
+    const parentTicketHL = document.getElementById("parentTicketHL")?.value || "";
+    const flmHL = document.getElementById("flmHL")?.value || "";
     const clearviewTestResultHL = document.getElementById("testResultHL")?.value || "";
     const actionHL = document.getElementById("actionTakenHL")?.value || "";
 
     if (type === "standard") {
       note = `ANI: ${aniHL}\nSFDC Case No: ${sfdcCaseNoHL}\nCEP Number: ${cepNumberHL}\nCustomer Account: ${customerAccountHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nAction: ${actionHL}`;
     } else if (type === "cep") {
-      note = `CONTACT CHANNEL-VENDOR: ${contactChannelHL}\nSFDC CASE NO: ${sfdcCaseNoHL}\nADDITIONAL CONTACT PERSON, NUMBER, AND EMAIL: ${additionalContactHL}\nWORKING PERMIT: ${workingPermitHL}\nAVAILABILITY DAY AND TIME: ${availabilityHL}\nCLEARVIEW TEST RESULT: ${clearviewTestResultHL}\nCOMPLAINT/WOCAS: ${wocasHL}\nACTION: ${actionHL}`;
+      note = `CONTACT CHANNEL-VENDOR: ${contactChannelHL}\nSFDC CASE NO: ${sfdcCaseNoHL}\nAdditional CONTACT PERSON: ${aOCPHL}\nAdditional CONTACT NUMBER: ${aOCNHL}\nWORKING PERMIT: ${workingPermitHL}\nAVAILABILITY DAY AND TIME: ${availabilityHL}\nCLEARVIEW TEST RESULT: ${clearviewTestResultHL}\nCOMPLAINT/WOCAS: ${wocasHL}\nREQUIRED ACTION: ${requiredActionHL}\nONU SERIAL NUMBER: ${onuSerialHL}\nONU LIGHT STATUS: ${onuStatusHL}\nFLM TROUBLESHOOTING: ${flmHL}\nPARENT TICKET: ${parentTicketHL}\nACTION: ${actionHL}`;
     } else if (type === "description") {
-      note = `Concern: ${concernHL}\nReported By Contact Person and Phone: ${reportedByHL}\nAdditional Contact: ${additionalContactHL}\nWorking Permit: ${workingPermitHL}\nAvailability Day and Time: ${availabilityHL}`;
+      note = `Contact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Onsite Contact Person: ${aOCPHL}\nAdditional Onsite Contact Number: ${aOCNHL}\nAvailability Day and Time: ${availabilityHL}\nWorking Permit: ${workingPermitHL}`;
     }
   }   if (channel === "BOH - CND") {
     const billingAccountBoh = document.getElementById("billingAccountBoh")?.value || "";
@@ -238,10 +249,10 @@ function generateNote(type) {
       concernBoh = concernBohMain;
     }
 
-    const additionalBoh = document.getElementById("additionalBoh")?.value || "";
+    const actionTakenBoh = document.getElementById("actionTakenBoh")?.value || "";
 
     if (type === "standard") {
-      note = `Customer Account: ${customerAccountBoh}\nBilling Account: ${billingAccountBoh}\nAccount Name: ${accountNameBoh}\nService ID: ${serviceIdBoh}\nConcern: ${concernBoh}\nAdditional Remarks: ${additionalBoh}`;
+      note = `Customer Account: ${customerAccountBoh}\nBilling Account: ${billingAccountBoh}\nAccount Name: ${accountNameBoh}\nService ID: ${serviceIdBoh}\nConcern: ${concernBoh}\nAction: ${actionTakenBoh}`;
     }
   }
 
