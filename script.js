@@ -237,7 +237,9 @@ function generateNote(type) {
     const actionHL = document.getElementById("actionTakenHL")?.value || "";
 
     if (type === "standard") {
-      note = `ANI: ${aniHL}\nSFDC Case No: ${sfdcCaseNoHL}\nCEP Number: ${cepNumberHL}\nCustomer Account: ${customerAccountHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nAction: ${actionHL}`;
+      /*note = `ANI: ${aniHL}\nSFDC Case No: ${sfdcCaseNoHL}\nCEP Number: ${cepNumberHL}\nCustomer Account: ${customerAccountHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nAction: ${actionHL}`;*/
+
+      note = `ANI: ${aniHL}\nBilling Account: ${billingAccountHL}\nService ID: ${serviceIdHL}\nConcern: ${concernHL}\nComplaint/WOCAS: ${wocasHL}\nAction: ${actionHL}`;
     } else if (type === "full") {
       note = `ANI: ${aniHL}\nSFDC Case No: ${sfdcCaseNoHL}\nCEP Number: ${cepNumberHL}\nCustomer Account: ${customerAccountHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nComplaint/WOCAS: ${wocasHL}\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Contact Person: ${aOCPHL}\nAdditional Contact Number: ${aOCNHL}\nAvailability: ${availabilityHL}\nWorking Permit: ${workingPermitHL}\nONU Serial Number: ${onuSerialHL}\nONU Light Status: ${onuStatusHL}\nParent Ticket Number: ${parentTicketHL}\nClearview Test Result: ${clearviewTestResultHL}\nRequired Action: ${requiredActionHL}\nFLM Troubleshooting: ${flmHL}\nAction: ${actionHL}`;
     } else if (type === "cep") {
