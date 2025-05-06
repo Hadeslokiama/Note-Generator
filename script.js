@@ -12,13 +12,19 @@ function toggleFormSections() {
   } else if (contactChannel === "HOTLINE - CND") {
     document.getElementById("hotlineForm").style.display = "block";
   }
+
+  const hideLongButtons = (contactChannel === "BOH - CND");
+  ["fullBtn", "cepBtn", "descBtn"].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.style.display = hideLongButtons ? "none" : "inline-flex";
+  });
 }
 
 function handleCustomReset(evt) {
   if (evt) evt.preventDefault();
 
   const currentChannel = document.getElementById("contactChannel").value;
-                                                  
+
   document.querySelectorAll(".contactForm").forEach(form => {
     form.querySelectorAll("input, select, textarea").forEach(el => {
       if (el.id === "contactChannel") return;
@@ -36,29 +42,29 @@ function handleCustomReset(evt) {
 
   toggleFormSections();
 }
-  
+
 document.addEventListener("DOMContentLoaded", () => {
   const resetBtn = document.getElementById("resetBtn");
   if (resetBtn) resetBtn.addEventListener("click", handleCustomReset);
 });
 
 function showRelevantSubcategory() {
-  const smVisible  = document.getElementById("socialMediaForm").style.display === "block";
-  const hlVisible  = document.getElementById("hotlineForm").style.display    === "block";
-  const bohVisible = document.getElementById("bohForm").style.display        === "block";
+  const smVisible = document.getElementById("socialMediaForm").style.display === "block";
+  const hlVisible = document.getElementById("hotlineForm").style.display === "block";
+  const bohVisible = document.getElementById("bohForm").style.display === "block";
 
   let selected = "";
-  let prefix   = ""; 
+  let prefix = "";
 
   if (smVisible) {
     selected = document.getElementById("concernSM").value;
-    prefix   = "SM";
+    prefix = "SM";
   } else if (hlVisible) {
     selected = document.getElementById("concernHL").value;
-    prefix   = "HL";
+    prefix = "HL";
   } else if (bohVisible) {
     selected = document.getElementById("concernBoh").value;
-    prefix   = "Boh"; 
+    prefix = "Boh";
   }
 
   document.querySelectorAll(`.subcategory-select[id^="subcat${prefix}-"]`).forEach(div => {
@@ -66,7 +72,7 @@ function showRelevantSubcategory() {
   });
 
   const idFragment = mapConcernToId(selected);
-  const wrapper    = document.getElementById(`subcat${prefix}-${idFragment}`);
+  const wrapper = document.getElementById(`subcat${prefix}-${idFragment}`);
   if (wrapper) {
     wrapper.style.display = "flex";
 
@@ -152,9 +158,9 @@ function generateNote(type) {
     const concernSMSub = document.getElementById(`subcategorySM-${mapConcernToId(rawconcernSMMain)}`)?.value || "";
     const isValidSub = concernSMSub && concernSMSub !== "Select Subcategory";
     const isValidMain = concernSMMain && concernSMMain !== "Select Category";
-    
+
     let concernSM = "";
-    
+
     if (isValidSub && isValidMain) {
       concernSM = `${concernSMMain} – ${concernSMSub}`;
     } else if (isValidSub) {
@@ -162,7 +168,7 @@ function generateNote(type) {
     } else if (isValidMain) {
       concernSM = concernSMMain;
     }
-
+    const wocasSM = document.getElementById("wocasSM")?.value || "";
     const contactPerSM = document.getElementById("contactPerSM")?.value || "";
     const contactNumSM = document.getElementById("contactNumSM")?.value || "";
     const emailAddressSM = document.getElementById("emailAddressSM")?.value || "";
@@ -170,13 +176,21 @@ function generateNote(type) {
     const aOCNSM = document.getElementById("aOCNSM")?.value || "";
     const availabilitySM = document.getElementById("availabilitySM")?.value || "";
     const workingPermitSM = document.getElementById("workingPermitSM")?.value || "";
+    const requiredActionSM = document.getElementById("requiredActionSM")?.value || "";
+    const onuSerialSM = document.getElementById("onuSerialSM")?.value || "";
+    const onuStatusSM = document.getElementById("onuStatusSM")?.value || "";
+    const parentTicketSM = document.getElementById("parentTicketSM")?.value || "";
     const clearviewTestResultSM = document.getElementById("testResultSM")?.value || "";
+    const flmSM = document.getElementById("flmSM")?.value || "";
     const actionSM = document.getElementById("actionTakenSM")?.value || "";
 
     if (type === "standard") {
       note = `ANI: ${aniSM}\nSFDC Case No: ${sfdcCaseNoSM}\nCEP Number: ${cepNumberSM}\nReceived thru Enterprise SocMed Dated: ${receivedDateSM}\nFrom: ${fromSM}\nCustomer Account: ${customerAccountSM}\nBilling Account: ${billingAccountSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nIndustry Group: ${industryGroupSM}\nConcern: ${concernSM}\nAction: ${actionSM}`;
+    } else if (type === "full") {
+      note = `ANI: ${aniSM}\nSFDC Case No: ${sfdcCaseNoSM}\nCEP Number: ${cepNumberSM}\nCustomer Account: ${customerAccountSM}\nBilling Account: ${billingAccountSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nIndustry Group: ${industryGroupSM}\nConcern: ${concernSM}\nComplaint/WOCAS: ${wocasSM}\nContact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nEmail Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nAvailability: ${availabilitySM}\nWorking Permit: ${workingPermitSM}\nONU Serial Number: ${onuSerialSM}\nONU Light Status: ${onuStatusSM}\nParent Ticket Number: ${parentTicketSM}\nClearview Test Result: ${clearviewTestResultSM}\nRequired Action: ${requiredActionSM}\nFLM Troubleshooting: ${flmSM}\nAction: ${actionSM}`;
+
     } else if (type === "cep") {
-      note = `CONTACT CHANNEL-VENDOR: ${contactChannelSM}\nSFDC CASE NO: ${sfdcCaseNoSM}\nAdditional CONTACT PERSON: ${aOCPSM}\nAdditional CONTACT NUMBER: ${aOCNSM}\nWORKING PERMIT: ${workingPermitSM}\nAVAILABILITY DAY AND TIME: ${availabilitySM}\nCLEARVIEW TEST RESULT: ${clearviewTestResultSM}\nCOMPLAINT/WOCAS: ${wocasSM}\nREQUIRED ACTION: ${requiredActionSM}\nONU SERIAL NUMBER: ${onuSerialSM}\nONU LIGHT STATUS: ${onuStatusSM}\nFLM TROUBLESHOOTING: ${flmSM}\nPARENT TICKET: ${parentTicketSM}\nACTION: ${actionSM}`;
+      note = `CONTACT CHANNEL-VENDOR: ${contactChannelSM}\nSFDC CASE NO: ${sfdcCaseNoSM}\nnADDITIONAL CONTACT PERSON: ${aOCPSM}\nADDITIONAL CONTACT NUMBER: ${aOCNSM}\nWORKING PERMIT: ${workingPermitSM}\nAVAILABILITY DAY AND TIME: ${availabilitySM}\nCLEARVIEW TEST RESULT: ${clearviewTestResultSM}\nCOMPLAINT/WOCAS: ${wocasSM}\nREQUIRED ACTION: ${requiredActionSM}\nONU SERIAL NUMBER: ${onuSerialSM}\nONU LIGHT STATUS: ${onuStatusSM}\nFLM TROUBLESHOOTING: ${flmSM}\nPARENT TICKET: ${parentTicketSM}\nACTION: ${actionSM}`;
     } else if (type === "description") {
       note = `Contact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nEmail Address: ${emailAddressSM}\nAdditional Onsite Contact Person: ${aOCPSM}\nAdditional Onsite Contact Number: ${aOCNSM}\nAvailability Day and Time: ${availabilitySM}\nWorking Permit: ${workingPermitSM}`;
     }
@@ -195,9 +209,9 @@ function generateNote(type) {
     const concernHLSub = document.getElementById(`subcategoryHL-${mapConcernToId(rawConcernHLMain)}`)?.value || "";
     const isValidSub = concernHLSub && concernHLSub !== "Select Subcategory";
     const isValidMain = concernHLMain && concernHLMain !== "Select Category";
-    
+
     let concernHL = "";
-    
+
     if (isValidSub && isValidMain) {
       concernHL = `${concernHLMain} – ${concernHLSub}`;
     } else if (isValidSub) {
@@ -205,7 +219,7 @@ function generateNote(type) {
     } else if (isValidMain) {
       concernHL = concernHLMain;
     }
-    
+
     const wocasHL = document.getElementById("wocasHL")?.value || "";
     const contactPerHL = document.getElementById("contactPerHL")?.value || "";
     const contactNumHL = document.getElementById("contactNumHL")?.value || "";
@@ -224,12 +238,14 @@ function generateNote(type) {
 
     if (type === "standard") {
       note = `ANI: ${aniHL}\nSFDC Case No: ${sfdcCaseNoHL}\nCEP Number: ${cepNumberHL}\nCustomer Account: ${customerAccountHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nAction: ${actionHL}`;
+    } else if (type === "full") {
+      note = `ANI: ${aniHL}\nSFDC Case No: ${sfdcCaseNoHL}\nCEP Number: ${cepNumberHL}\nCustomer Account: ${customerAccountHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nComplaint/WOCAS: ${wocasHL}\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Contact Person: ${aOCPHL}\nAdditional Contact Number: ${aOCNHL}\nAvailability: ${availabilityHL}\nWorking Permit: ${workingPermitHL}\nONU Serial Number: ${onuSerialHL}\nONU Light Status: ${onuStatusHL}\nParent Ticket Number: ${parentTicketHL}\nClearview Test Result: ${clearviewTestResultHL}\nRequired Action: ${requiredActionHL}\nFLM Troubleshooting: ${flmHL}\nAction: ${actionHL}`;
     } else if (type === "cep") {
       note = `CONTACT CHANNEL-VENDOR: ${contactChannelHL}\nSFDC CASE NO: ${sfdcCaseNoHL}\nAdditional CONTACT PERSON: ${aOCPHL}\nAdditional CONTACT NUMBER: ${aOCNHL}\nWORKING PERMIT: ${workingPermitHL}\nAVAILABILITY DAY AND TIME: ${availabilityHL}\nCLEARVIEW TEST RESULT: ${clearviewTestResultHL}\nCOMPLAINT/WOCAS: ${wocasHL}\nREQUIRED ACTION: ${requiredActionHL}\nONU SERIAL NUMBER: ${onuSerialHL}\nONU LIGHT STATUS: ${onuStatusHL}\nFLM TROUBLESHOOTING: ${flmHL}\nPARENT TICKET: ${parentTicketHL}\nACTION: ${actionHL}`;
     } else if (type === "description") {
       note = `Contact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Onsite Contact Person: ${aOCPHL}\nAdditional Onsite Contact Number: ${aOCNHL}\nAvailability Day and Time: ${availabilityHL}\nWorking Permit: ${workingPermitHL}`;
     }
-  }   if (channel === "BOH - CND") {
+  } if (channel === "BOH - CND") {
     const billingAccountBoh = document.getElementById("billingAccountBoh")?.value || "";
     const customerAccountBoh = document.getElementById("customerAccountBoh")?.value || "";
     const accountNameBoh = document.getElementById("accountNameBoh")?.value || "";
@@ -252,7 +268,7 @@ function generateNote(type) {
     const actionTakenBoh = document.getElementById("actionTakenBoh")?.value || "";
 
     if (type === "standard") {
-      note = `Customer Account: ${customerAccountBoh}\nBilling Account: ${billingAccountBoh}\nAccount Name: ${accountNameBoh}\nService ID: ${serviceIdBoh}\nConcern: ${concernBoh}\nAction: ${actionTakenBoh}`;
+      note = `Account Name: ${accountNameBoh}\nCustomer Account: ${customerAccountBoh}\nBilling Account: ${billingAccountBoh}\nService ID: ${serviceIdBoh}\nConcern: ${concernBoh}\nAction: ${actionTakenBoh}`;
     }
   }
 
@@ -273,7 +289,7 @@ function updateSubcategoryOptions() {
   const subcategorySelect = document.getElementById("subcategory");
 
   const subcategories = {
-    "Non Voc": ["Home Concerns", "Smart Concerns", "164 / Bantay Cable"],
+    "Non Voc": ["Non Voc", "N/A", "Home Concerns", "Smart Concerns", "164 / Bantay Cable"],
     "Complaint": [
       "Cannot Browse", "Frequent Disconnection", "Low BW", "No Internet Connection (NIC)",
       "Redirected To PLDT Sites", "Selective Browsing", "Slow Browsing", "Webpage Not Loading",
@@ -283,19 +299,19 @@ function updateSubcategoryOptions() {
       "Noisy", "Poor Reception/Transmission", "Receives Wrong Number", "With Recording"
     ],
     "Inquiry": [
-      "Account Related Inquiry", "Aftersales Inquiry Account Maintenance", "Aftersales Inquiry Account Migration",
-      "Aftersales Inquiry Change Number", "Aftersales Inquiry Disconnection", "Aftersales Inquiry Migration",
-      "Aftersales Inquiry Reconnection", "Aftersales Inquiry Relocation", "Aftersales Inquiry Special Feature",
-      "Aftersales Inquiry Supersedure", "Aftersales Inquiry Bridge Mode Configuration", "Aftersales Inquiry Upgrade",
-      "Aftersales Inquiry Downgrade", "Aftersales Inquiry Reconnection from TD", "Aftersales Inquiry Reconnection from OP",
+      "Account Related Inquiry", "Inquiry Account Maintenance", "Inquiry Account Migration",
+      "Inquiry Change Number", "Inquiry Disconnection", "Inquiry Migration",
+      "Inquiry Reconnection", "Inquiry Relocation", "Inquiry Special Feature",
+      "Inquiry Supersedure", "Inquiry Bridge Mode Configuration", "Inquiry Upgrade",
+      "Inquiry Downgrade", "Inquiry Reconnection from TD", "Inquiry Reconnection from OP",
       "Other Aftersales Inquiry", "General Inquiries", "SSC Info", "Product Inquiry", "Promo Inquiry"
     ],
     "Aftersales Request": [
-      "Request Account Maintenance", "Request Account Migration", "Request Bridge Mode Configuration",
-      "Request Change Number", "Request Disconnection", "Request Migration", "Request Reconnection",
-      "Request Relocation", "Request Special Feature", "Request Supersedure", "Other Aftersales Request",
-      "Request Upgrade", "Request Downgrade", "Request Reconnection from TD", "Request Reconnection from OP",
-      "Request Balance Transfer", "Request Refund", "Request Additional Service", "Request New Application",
+      "Account Maintenance", "Account Migration", "Bridge Mode Configuration",
+      "Change Number", "Disconnection", "Migration", "Reconnection",
+      "Relocation", "Special Feature", "Supersedure", "Other Aftersales Request",
+      "Upgrade", "Downgrade", "Reconnection from TD", "Reconnection from OP",
+      "Request Balance Transfer", "Refund", "Additional Service", "New Application",
       "Other Request"
     ],
     "Follow-up Within SLA": [
@@ -317,7 +333,16 @@ function updateSubcategoryOptions() {
       "Payment Details/Posting", "Bill Delivery Dispute", "MRC/NRC", "Payment (Unreflected/Misapplied )",
       "Rebate (Non Service)", "Non-receipt of Billing Invoice (BI)", "BOL/e PORTAL ISSUE cant access",
       "BOL/e PORTAL ISSUE  BI not visible", "BOL/e PORTAL ISSUE cannot download BI",
-      "BOL/e PORTAL ISSUE payment module error"
+      "BOL/e PORTAL ISSUE payment module error", "Bills On Line", "Tolls/Other Charges", "Other Bill Concern", "Balance Transfer", "Refund", "SOA Request"
+    ],
+    "Repair": [
+      "VD-No Voice and Data", "VD-Degraded Voice and Data", "Cannot Browse", "Frequent Disconnection",
+      "Low BW", "No Internet Connection (NIC)", "Redirected To PLDT Sites", "Selective Browsing", "Webpage Not Loading", "Cannot Call To Specific Number",
+      "Cannot Receive Call", "Continuous/Delayed Dialtone", "Cut Calls", "Fast Busy Tone", "No Dialtone",
+      "Noisy", "Poor Reception/Transmission"
+    ],
+    "ProductServices": [
+      "Account Maintenance", "Account Migration", "Bridge Mode Configuration", "Change Number", "Disconnection", "Migration", "Reconnection"
     ]
   };
 
@@ -347,24 +372,13 @@ function showAlert(message, color = "green") {
   alertDiv.style.display = "block";
 
   setTimeout(() => {
-      alertDiv.classList.add("fade-out");
+    alertDiv.classList.add("fade-out");
   }, 2000);
 
   setTimeout(() => {
-      alertDiv.style.display = "none";
-      alertDiv.classList.remove("fade-out");
+    alertDiv.style.display = "none";
+    alertDiv.classList.remove("fade-out");
   }, 3000);
 }
-/*function resetForm() {
-  const inputs = document.querySelectorAll("input, textarea, select");
-  inputs.forEach((el) => {
-    el.value = "";
-    el.classList.remove("highlight");
-  });
 
-  const forms = document.querySelectorAll(".contactForm");
-  forms.forEach((form) => (form.style.display = "none"));
-
-  document.getElementById("contactChannel").value = "";
-}*/
 
