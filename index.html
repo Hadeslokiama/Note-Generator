@@ -56,18 +56,19 @@
           <option value="BOH - CND">BOH - CND</option>
         </select>
       </div>
+      <hr class="my-3 opacity-75" />
       <!-- SOCMED Channel Selection -->
       <div id="socialMediaForm" class="contactForm" style="display: none">
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold"
-            >Case Number
+            >ANI
             <div class="required-asterisk">*</div></span
           >
           <input
             type="text"
             class="form-control"
             id="caseNumberSM"
-            placeholder="ANI"
+            placeholder="Case Number"
           />
         </div>
 
@@ -84,7 +85,6 @@
           />
         </div>
 
-
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold"
             >CEP Number
@@ -100,7 +100,7 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold"
-            >Received thru Enterprise SocMed Dated
+            >Received thru SocMed Dated
             <div class="required-asterisk">*</div></span
           >
           <input
@@ -126,19 +126,6 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold"
-            >Billing Account
-            <div class="required-asterisk">*</div></span
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="billingAccountSM"
-            placeholder="BA"
-          />
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-text fw-bold"
             >Customer Account
             <div class="required-asterisk">*</div></span
           >
@@ -147,6 +134,19 @@
             class="form-control"
             id="customerAccountSM"
             placeholder="CRM"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Billing Account
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="billingAccountSM"
+            placeholder="BA"
           />
         </div>
 
@@ -183,6 +183,7 @@
           >
           <select class="form-select" id="industryGroupSM">
             <option selected disabled>Select</option>
+            <option value="N/A">N/A</option>
             <option value="Home">Home</option>
             <option value="SMBIZ">SMBIZ</option>
             <option value="One Luzon">One Luzon</option>
@@ -206,25 +207,43 @@
           <!-- Concern Dropdown -->
           <div class="col-md-6">
             <div class="input-group">
-              <span class="input-group-text fw-bold">Concern <div class="required-asterisk">*</div></span>
-              <select class="form-select" id="concernSM" onchange="showRelevantSubcategory()">
+              <span class="input-group-text fw-bold"
+                >Concern
+                <div class="required-asterisk">*</div></span
+              >
+              <select
+                class="form-select"
+                id="concernSM"
+                onchange="showRelevantSubcategory()"
+              >
                 <option value="" disabled selected>Select Category</option>
                 <option value="Non Voc">Non Voc</option>
                 <option value="Complaint">Complaint</option>
                 <option value="Inquiry">Inquiry</option>
                 <option value="Aftersales Request">Aftersales Request</option>
-                <option value="Follow-up Within SLA">Follow-up Within SLA</option>
-                <option value="Follow-up Beyond SLA">Follow-up Beyond SLA</option>
+                <option value="Follow-up Within SLA">
+                  Follow-up Within SLA
+                </option>
+                <option value="Follow-up Beyond SLA">
+                  Follow-up Beyond SLA
+                </option>
                 <option value="Billing">Billing</option>
               </select>
             </div>
           </div>
-        
+
           <!-- Subcategory Dropdowns per Category -->
           <div class="col-md-6">
             <!-- Non Voc -->
-            <div class="input-group subcategory-select" id="subcatSM-NonVoc" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatSM-NonVoc"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategorySM-NonVoc">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>N/A</option>
@@ -234,10 +253,17 @@
                 <option>164 / Bantay Cable</option>
               </select>
             </div>
-        
+
             <!-- Complaint -->
-            <div class="input-group subcategory-select" id="subcatSM-Complaint" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatSM-Complaint"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategorySM-Complaint">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Cannot Browse</option>
@@ -266,27 +292,34 @@
                 <option>With Recording</option>
               </select>
             </div>
-        
+
             <!-- Inquiry -->
-            <div class="input-group subcategory-select" id="subcatSM-Inquiry" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatSM-Inquiry"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategorySM-Inquiry">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Account Related Inquiry</option>
-                <option>Aftersales Inquiry Account Maintenance</option>
-                <option>Aftersales Inquiry Account Migration</option>
-                <option>Aftersales Inquiry Change Number</option>
-                <option>Aftersales Inquiry Disconnection</option>
-                <option>Aftersales Inquiry Migration</option>
-                <option>Aftersales Inquiry Reconnection</option>
-                <option>Aftersales Inquiry Relocation</option>
-                <option>Aftersales Inquiry Special Feature</option>
-                <option>Aftersales Inquiry Supersedure</option>
-                <option>Aftersales Inquiry Bridge Mode Configuration</option>
-                <option>Aftersales Inquiry Upgrade</option>
-                <option>Aftersales Inquiry Downgrade</option>
-                <option>Aftersales Inquiry Reconnection from TD</option>
-                <option>Aftersales Inquiry Reconnection from OP</option>
+                <option>Inquiry Account Maintenance</option>
+                <option>Inquiry Account Migration</option>
+                <option>Inquiry Change Number</option>
+                <option>Inquiry Disconnection</option>
+                <option>Inquiry Migration</option>
+                <option>Inquiry Reconnection</option>
+                <option>Inquiry Relocation</option>
+                <option>Inquiry Special Feature</option>
+                <option>Inquiry Supersedure</option>
+                <option>Inquiry Bridge Mode Configuration</option>
+                <option>Inquiry Upgrade</option>
+                <option>Inquiry Downgrade</option>
+                <option>Inquiry Reconnection from TD</option>
+                <option>Inquiry Reconnection from OP</option>
                 <option>Other Aftersales Inquiry</option>
                 <option>General Inquiries</option>
                 <option>SSC Info</option>
@@ -294,38 +327,52 @@
                 <option>Promo Inquiry</option>
               </select>
             </div>
-        
+
             <!-- Aftersales Request -->
-            <div class="input-group subcategory-select" id="subcatSM-AftersalesRequest" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatSM-AftersalesRequest"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategorySM-AftersalesRequest">
                 <option value="" disabled selected>Select Subcategory</option>
-                <option>Request Account Maintenance</option>
-                <option>Request Account Migration</option>
-                <option>Request Bridge Mode Configuration</option>
-                <option>Request Change Number</option>
-                <option>Request Disconnection</option>
-                <option>Request Migration</option>
-                <option>Request Reconnection</option>
-                <option>Request Relocation</option>
-                <option>Request Special Feature</option>
-                <option>Request Supersedure</option>
+                <option>Account Maintenance</option>
+                <option>Account Migration</option>
+                <option>Bridge Mode Configuration</option>
+                <option>Change Number</option>
+                <option>Disconnection</option>
+                <option>Migration</option>
+                <option>Reconnection</option>
+                <option>Relocation</option>
+                <option>Special Feature</option>
+                <option>Supersedure</option>
                 <option>Other Aftersales Request</option>
-                <option>Request Upgrade</option>
-                <option>Request Downgrade</option>
-                <option>Request Reconnection from TD</option>
-                <option>Request Reconnection from OP</option>
-                <option>Request Balance Transfer</option>
-                <option>Request Refund</option>
-                <option>Request Additional Service</option>
-                <option>Request New Application</option>
+                <option>Upgrade</option>
+                <option>Downgrade</option>
+                <option>Reconnection from TD</option>
+                <option>Reconnection from OP</option>
+                <option>Balance Transfer</option>
+                <option>Refund</option>
+                <option>Additional Service</option>
+                <option>New Application</option>
                 <option>Other Request</option>
               </select>
             </div>
-        
+
             <!-- Follow-up Within SLA -->
-            <div class="input-group subcategory-select" id="subcatSM-FollowupWithinSLA" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatSM-FollowupWithinSLA"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategorySM-FollowupWithinSLA">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Repair Complex</option>
@@ -349,10 +396,17 @@
                 <option>Aftersales New Application</option>
               </select>
             </div>
-        
+
             <!-- Follow-up Beyond SLA -->
-            <div class="input-group subcategory-select" id="subcatSM-FollowupBeyondSLA" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatSM-FollowupBeyondSLA"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategorySM-FollowupBeyondSLA">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Repair Complex</option>
@@ -376,10 +430,17 @@
                 <option>Aftersales New Application</option>
               </select>
             </div>
-        
+
             <!-- Billing -->
-            <div class="input-group subcategory-select" id="subcatSM-Billing" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatSM-Billing"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategorySM-Billing">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Billing Inq Account Balance</option>
@@ -393,12 +454,19 @@
                 <option>Rebate (Non Service)</option>
                 <option>Non-receipt of Billing Invoice (BI)</option>
                 <option>BOL/e PORTAL ISSUE cant access</option>
-                <option>BOL/e PORTAL ISSUE  BI not visible</option>
+                <option>BOL/e PORTAL ISSUE BI not visible</option>
                 <option>BOL/e PORTAL ISSUE cannot download BI</option>
                 <option>BOL/e PORTAL ISSUE payment module error</option>
               </select>
             </div>
           </div>
+        </div>
+
+        <hr class="my-3 opacity-75" />
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Complaint/WOCAS </span>
+          <textarea class="form-control" id="wocasSM"></textarea>
         </div>
 
         <div class="input-group mb-3">
@@ -407,7 +475,7 @@
             type="text"
             class="form-control"
             id="contactPerSM"
-            placeholder="Name and Phone"
+            placeholder="John Doe"
           />
         </div>
 
@@ -417,7 +485,7 @@
             type="text"
             class="form-control"
             id="contactNumSM"
-            placeholder="Name and Phone"
+            placeholder="09xxxxxxxxx"
           />
         </div>
 
@@ -427,27 +495,31 @@
             type="text"
             class="form-control"
             id="emailAddressSM"
-            placeholder="Name and Phone"
+            placeholder="a@a.com"
           />
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Additional Onsite Contact Person </span>
+          <span class="input-group-text fw-bold"
+            >Additional Contact Person
+          </span>
           <input
             type="text"
             class="form-control"
             id="aOCPSM"
-            placeholder="Name and Phone"
+            placeholder="John Doe"
           />
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Additional Onsite Contact Number </span>
+          <span class="input-group-text fw-bold"
+            >Additional Contact Number
+          </span>
           <input
             type="text"
             class="form-control"
             id="aOCNSM"
-            placeholder="Name and Phone"
+            placeholder="09xxxxxxxxx"
           />
         </div>
 
@@ -467,18 +539,16 @@
           <span class="input-group-text fw-bold">Working Permit </span>
           <select class="form-select" id="workingPermitSM">
             <option selected disabled>Select</option>
+            <option value="N/A">N/A</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
-            <option value="N/A">N/A</option>
+            <option value="Valid ID">Valid ID</option>
             <option value="For Verification">For Verification</option>
           </select>
         </div>
-
+        <hr class="my-3 opacity-75" />
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold"
-            >ONU Serial Number
-            </span
-          >
+          <span class="input-group-text fw-bold">ONU Serial Number </span>
           <input
             type="text"
             class="form-control"
@@ -488,10 +558,7 @@
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold"
-            >ONU Light Status
-            </span
-          >
+          <span class="input-group-text fw-bold">ONU Light Status </span>
           <input
             type="text"
             class="form-control"
@@ -524,6 +591,7 @@
           <span class="input-group-text fw-bold">Required Action</span>
           <select class="form-select" id="requiredActionSM">
             <option selected disabled>Select</option>
+            <option value="N/A">N/A</option>
             <option value="Dispatched to Technician for Inside Checking">
               Dispatched to Technician for Inside Checking
             </option>
@@ -531,13 +599,12 @@
               Dispatched to Technician for Outside Checking
             </option>
             <option value="Action Required L2">Action Required L2</option>
-            <option value="For FCR Checking">For FCR Checking</option>`
+            <option value="For FCR Checking">For FCR Checking</option>
+            `
             <option value="For Network Checking">For Network Checking</option>
-            <option value="N/A">N/A</option>
           </select>
         </div>
 
-        
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">FLM Troubleshooting</span>
           <textarea class="form-control" id="flmSM"></textarea>
@@ -552,14 +619,14 @@
       <div id="hotlineForm" class="contactForm" style="display: none">
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold"
-            >Case Number
+            >ANI
             <div class="required-asterisk">*</div></span
           >
           <input
             type="text"
             class="form-control"
             id="caseNumberHL"
-            placeholder="ANI"
+            placeholder="Case Number"
           />
         </div>
 
@@ -591,19 +658,6 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold"
-            >Billing Account
-            <div class="required-asterisk">*</div></span
-          >
-          <input
-            type="text"
-            class="form-control"
-            id="billingAccountHL"
-            placeholder="BA"
-          />
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-text fw-bold"
             >Customer Account
             <div class="required-asterisk">*</div></span
           >
@@ -612,6 +666,19 @@
             class="form-control"
             id="customerAccountHL"
             placeholder="CRM"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold"
+            >Billing Account
+            <div class="required-asterisk">*</div></span
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="billingAccountHL"
+            placeholder="BA"
           />
         </div>
 
@@ -648,6 +715,7 @@
           >
           <select class="form-select" id="industryGroupHL">
             <option selected disabled>Select</option>
+            <option value="N/A">N/A</option>
             <option value="Home">Home</option>
             <option value="SMBIZ">SMBIZ</option>
             <option value="One Luzon">One Luzon</option>
@@ -671,25 +739,43 @@
           <!-- Concern Dropdown -->
           <div class="col-md-6">
             <div class="input-group">
-              <span class="input-group-text fw-bold">Concern <div class="required-asterisk">*</div></span>
-              <select class="form-select" id="concernHL" onchange="showRelevantSubcategory()">
+              <span class="input-group-text fw-bold"
+                >Concern
+                <div class="required-asterisk">*</div></span
+              >
+              <select
+                class="form-select"
+                id="concernHL"
+                onchange="showRelevantSubcategory()"
+              >
                 <option value="" disabled selected>Select Category</option>
                 <option value="Non Voc">Non Voc</option>
                 <option value="Complaint">Complaint</option>
                 <option value="Inquiry">Inquiry</option>
                 <option value="Aftersales Request">Aftersales Request</option>
-                <option value="Follow-up Within SLA">Follow-up Within SLA</option>
-                <option value="Follow-up Beyond SLA">Follow-up Beyond SLA</option>
+                <option value="Follow-up Within SLA">
+                  Follow-up Within SLA
+                </option>
+                <option value="Follow-up Beyond SLA">
+                  Follow-up Beyond SLA
+                </option>
                 <option value="Billing">Billing</option>
               </select>
             </div>
           </div>
-        
+
           <!-- Subcategory Dropdowns per Category -->
           <div class="col-md-6">
             <!-- Non Voc -->
-            <div class="input-group subcategory-select" id="subcatHL-NonVoc" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatHL-NonVoc"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategoryHL-NonVoc">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>N/A</option>
@@ -699,10 +785,17 @@
                 <option>164 / Bantay Cable</option>
               </select>
             </div>
-        
+
             <!-- Complaint -->
-            <div class="input-group subcategory-select" id="subcatHL-Complaint" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatHL-Complaint"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategoryHL-Complaint">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Cannot Browse</option>
@@ -731,27 +824,34 @@
                 <option>With Recording</option>
               </select>
             </div>
-        
+
             <!-- Inquiry -->
-            <div class="input-group subcategory-select" id="subcatHL-Inquiry" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatHL-Inquiry"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategoryHL-Inquiry">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Account Related Inquiry</option>
-                <option>Aftersales Inquiry Account Maintenance</option>
-                <option>Aftersales Inquiry Account Migration</option>
-                <option>Aftersales Inquiry Change Number</option>
-                <option>Aftersales Inquiry Disconnection</option>
-                <option>Aftersales Inquiry Migration</option>
-                <option>Aftersales Inquiry Reconnection</option>
-                <option>Aftersales Inquiry Relocation</option>
-                <option>Aftersales Inquiry Special Feature</option>
-                <option>Aftersales Inquiry Supersedure</option>
-                <option>Aftersales Inquiry Bridge Mode Configuration</option>
-                <option>Aftersales Inquiry Upgrade</option>
-                <option>Aftersales Inquiry Downgrade</option>
-                <option>Aftersales Inquiry Reconnection from TD</option>
-                <option>Aftersales Inquiry Reconnection from OP</option>
+                <option>Inquiry Account Maintenance</option>
+                <option>Inquiry Account Migration</option>
+                <option>Inquiry Change Number</option>
+                <option>Inquiry Disconnection</option>
+                <option>Inquiry Migration</option>
+                <option>Inquiry Reconnection</option>
+                <option>Inquiry Relocation</option>
+                <option>Inquiry Special Feature</option>
+                <option>Inquiry Supersedure</option>
+                <option>Inquiry Bridge Mode Configuration</option>
+                <option>Inquiry Upgrade</option>
+                <option>Inquiry Downgrade</option>
+                <option>Inquiry Reconnection from TD</option>
+                <option>Inquiry Reconnection from OP</option>
                 <option>Other Aftersales Inquiry</option>
                 <option>General Inquiries</option>
                 <option>SSC Info</option>
@@ -759,38 +859,52 @@
                 <option>Promo Inquiry</option>
               </select>
             </div>
-        
+
             <!-- Aftersales Request -->
-            <div class="input-group subcategory-select" id="subcatHL-AftersalesRequest" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatHL-AftersalesRequest"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategoryHL-AftersalesRequest">
                 <option value="" disabled selected>Select Subcategory</option>
-                <option>Request Account Maintenance</option>
-                <option>Request Account Migration</option>
-                <option>Request Bridge Mode Configuration</option>
-                <option>Request Change Number</option>
-                <option>Request Disconnection</option>
-                <option>Request Migration</option>
-                <option>Request Reconnection</option>
-                <option>Request Relocation</option>
-                <option>Request Special Feature</option>
-                <option>Request Supersedure</option>
+                <option>Account Maintenance</option>
+                <option>Account Migration</option>
+                <option>Bridge Mode Configuration</option>
+                <option>Change Number</option>
+                <option>Disconnection</option>
+                <option>Migration</option>
+                <option>Reconnection</option>
+                <option>Relocation</option>
+                <option>Special Feature</option>
+                <option>Supersedure</option>
                 <option>Other Aftersales Request</option>
-                <option>Request Upgrade</option>
-                <option>Request Downgrade</option>
-                <option>Request Reconnection from TD</option>
-                <option>Request Reconnection from OP</option>
-                <option>Request Balance Transfer</option>
-                <option>Request Refund</option>
-                <option>Request Additional Service</option>
-                <option>Request New Application</option>
+                <option>Upgrade</option>
+                <option>Downgrade</option>
+                <option>Reconnection from TD</option>
+                <option>Reconnection from OP</option>
+                <option>Balance Transfer</option>
+                <option>Refund</option>
+                <option>Additional Service</option>
+                <option>New Application</option>
                 <option>Other Request</option>
               </select>
             </div>
-        
+
             <!-- Follow-up Within SLA -->
-            <div class="input-group subcategory-select" id="subcatHL-FollowupWithinSLA" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatHL-FollowupWithinSLA"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategoryHL-FollowupWithinSLA">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Repair Complex</option>
@@ -814,10 +928,17 @@
                 <option>Aftersales New Application</option>
               </select>
             </div>
-        
+
             <!-- Follow-up Beyond SLA -->
-            <div class="input-group subcategory-select" id="subcatHL-FollowupBeyondSLA" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatHL-FollowupBeyondSLA"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategoryHL-FollowupBeyondSLA">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Repair Complex</option>
@@ -841,10 +962,17 @@
                 <option>Aftersales New Application</option>
               </select>
             </div>
-        
+
             <!-- Billing -->
-            <div class="input-group subcategory-select" id="subcatHL-Billing" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatHL-Billing"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategoryHL-Billing">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Billing Inq Account Balance</option>
@@ -858,13 +986,15 @@
                 <option>Rebate (Non Service)</option>
                 <option>Non-receipt of Billing Invoice (BI)</option>
                 <option>BOL/e PORTAL ISSUE cant access</option>
-                <option>BOL/e PORTAL ISSUE  BI not visible</option>
+                <option>BOL/e PORTAL ISSUE BI not visible</option>
                 <option>BOL/e PORTAL ISSUE cannot download BI</option>
                 <option>BOL/e PORTAL ISSUE payment module error</option>
               </select>
             </div>
           </div>
-        </div>        
+        </div>
+
+        <hr class="my-3 opacity-75" />
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Complaint/WOCAS </span>
@@ -877,7 +1007,7 @@
             type="text"
             class="form-control"
             id="contactPerHL"
-            placeholder="Name and Phone"
+            placeholder="John Doe"
           />
         </div>
 
@@ -887,7 +1017,7 @@
             type="text"
             class="form-control"
             id="contactNumHL"
-            placeholder="Name and Phone"
+            placeholder="09xxxxxxxxx"
           />
         </div>
 
@@ -897,27 +1027,31 @@
             type="text"
             class="form-control"
             id="emailAddressHL"
-            placeholder="Name and Phone"
+            placeholder="a@a.com"
           />
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Additional Onsite Contact Person </span>
+          <span class="input-group-text fw-bold"
+            >Additional Contact Person
+          </span>
           <input
             type="text"
             class="form-control"
             id="aOCPHL"
-            placeholder="Name and Phone"
+            placeholder="John Doe"
           />
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Additional Onsite Contact Number </span>
+          <span class="input-group-text fw-bold"
+            >Additional Contact Number
+          </span>
           <input
             type="text"
             class="form-control"
             id="aOCNHL"
-            placeholder="Name and Phone"
+            placeholder="09xxxxxxxxx"
           />
         </div>
 
@@ -937,12 +1071,15 @@
           <span class="input-group-text fw-bold">Working Permit </span>
           <select class="form-select" id="workingPermitHL">
             <option selected disabled>Select</option>
+            <option value="N/A">N/A</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
-            <option value="N/A">N/A</option>
+            <option value="Valid ID">Valid ID</option>
             <option value="For Verification">For Verification</option>
           </select>
         </div>
+
+        <hr class="my-3 opacity-75" />
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">ONU Serial Number </span>
@@ -988,6 +1125,7 @@
           <span class="input-group-text fw-bold">Required Action</span>
           <select class="form-select" id="requiredActionHL">
             <option selected disabled>Select</option>
+            <option value="N/A">N/A</option>
             <option value="Dispatched to Technician for Inside Checking">
               Dispatched to Technician for Inside Checking
             </option>
@@ -1068,39 +1206,36 @@
           <!-- Concern Dropdown -->
           <div class="col-md-6">
             <div class="input-group">
-              <span class="input-group-text fw-bold">Concern <div class="required-asterisk">*</div></span>
-              <select class="form-select" id="concernBoh" onchange="showRelevantSubcategory()">
+              <span class="input-group-text fw-bold"
+                >Concern
+                <div class="required-asterisk">*</div></span
+              >
+              <select
+                class="form-select"
+                id="concernBoh"
+                onchange="showRelevantSubcategory()"
+              >
                 <option value="" disabled selected>Select Category</option>
-                <option value="Non Voc">Non Voc</option>
-                <option value="Complaint">Complaint</option>
-                <option value="Inquiry">Inquiry</option>
-                <option value="Aftersales Request">Aftersales Request</option>
-                <option value="Follow-up Within SLA">Follow-up Within SLA</option>
-                <option value="Follow-up Beyond SLA">Follow-up Beyond SLA</option>
+                <option value="Repair">Repair</option>
                 <option value="Billing">Billing</option>
+                <option value="ProductServices">Product&Services</option>
               </select>
             </div>
           </div>
-        
+
           <!-- Subcategory Dropdowns per Category -->
+          <!-- Repair -->
           <div class="col-md-6">
-            <!-- Non Voc -->
-            <div class="input-group subcategory-select" id="subcatBoh-NonVoc" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
-              <select class="form-select" id="subcategoryBoh-NonVoc">
-                <option value="" disabled selected>Select Subcategory</option>
-                <option>N/A</option>
-                <option>Non Actionable</option>
-                <option>Home Concerns</option>
-                <option>Smart Concerns</option>
-                <option>164 / Bantay Cable</option>
-              </select>
-            </div>
-        
-            <!-- Complaint -->
-            <div class="input-group subcategory-select" id="subcatBoh-Complaint" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
-              <select class="form-select" id="subcategoryBoh-Complaint">
+            <div
+              class="input-group subcategory-select"
+              id="subcatBoh-Repair"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
+              <select class="form-select" id="subcategoryBoh-Repair">
                 <option value="" disabled selected>Select Subcategory</option>
                 <option>Cannot Browse</option>
                 <option>Frequent Disconnection</option>
@@ -1128,146 +1263,67 @@
                 <option>With Recording</option>
               </select>
             </div>
-        
-            <!-- Inquiry -->
-            <div class="input-group subcategory-select" id="subcatBoh-Inquiry" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
-              <select class="form-select" id="subcategoryBoh-Inquiry">
+
+            <!-- ProductServices -->
+            <div
+              class="input-group subcategory-select"
+              id="subcatBoh-ProductServices"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
+              <select class="form-select" id="subcategoryBoh-ProductServices">
                 <option value="" disabled selected>Select Subcategory</option>
-                <option>Account Related Inquiry</option>
-                <option>Aftersales Inquiry Account Maintenance</option>
-                <option>Aftersales Inquiry Account Migration</option>
-                <option>Aftersales Inquiry Change Number</option>
-                <option>Aftersales Inquiry Disconnection</option>
-                <option>Aftersales Inquiry Migration</option>
-                <option>Aftersales Inquiry Reconnection</option>
-                <option>Aftersales Inquiry Relocation</option>
-                <option>Aftersales Inquiry Special Feature</option>
-                <option>Aftersales Inquiry Supersedure</option>
-                <option>Aftersales Inquiry Bridge Mode Configuration</option>
-                <option>Aftersales Inquiry Upgrade</option>
-                <option>Aftersales Inquiry Downgrade</option>
-                <option>Aftersales Inquiry Reconnection from TD</option>
-                <option>Aftersales Inquiry Reconnection from OP</option>
-                <option>Other Aftersales Inquiry</option>
-                <option>General Inquiries</option>
-                <option>SSC Info</option>
-                <option>Product Inquiry</option>
-                <option>Promo Inquiry</option>
-              </select>
-            </div>
-        
-            <!-- Aftersales Request -->
-            <div class="input-group subcategory-select" id="subcatBoh-AftersalesRequest" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
-              <select class="form-select" id="subcategoryBoh-AftersalesRequest">
-                <option value="" disabled selected>Select Subcategory</option>
-                <option>Request Account Maintenance</option>
-                <option>Request Account Migration</option>
-                <option>Request Bridge Mode Configuration</option>
-                <option>Request Change Number</option>
-                <option>Request Disconnection</option>
-                <option>Request Migration</option>
-                <option>Request Reconnection</option>
-                <option>Request Relocation</option>
-                <option>Request Special Feature</option>
-                <option>Request Supersedure</option>
+                <option>Account Maintenance</option>
+                <option>Account Migration</option>
+                <option>Additional Service</option>
+                <option>Bridge Mode Configuration</option>
+                <option>Change Number</option>
+                <option>Disconnection</option>
+                <option>Migration</option>
+                <option>Reconnection</option>
+                <option>Relocation</option>
+                <option>Special Feature</option>
+                <option>Supersedure</option>
+                <option>Upgrade/Downgrade</option>
                 <option>Other Aftersales Request</option>
-                <option>Request Upgrade</option>
-                <option>Request Downgrade</option>
-                <option>Request Reconnection from TD</option>
-                <option>Request Reconnection from OP</option>
-                <option>Request Balance Transfer</option>
-                <option>Request Refund</option>
-                <option>Request Additional Service</option>
-                <option>Request New Application</option>
-                <option>Other Request</option>
               </select>
             </div>
-        
-            <!-- Follow-up Within SLA -->
-            <div class="input-group subcategory-select" id="subcatBoh-FollowupWithinSLA" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
-              <select class="form-select" id="subcategoryBoh-FollowupWithinSLA">
-                <option value="" disabled selected>Select Subcategory</option>
-                <option>Repair Complex</option>
-                <option>Repair Data</option>
-                <option>Repair Voice</option>
-                <option>Repair Voice and Data</option>
-                <option>Repair WAR SR</option>
-                <option>Aftersales Reconnection from TD</option>
-                <option>Aftersales Reconnection from OP</option>
-                <option>Aftersales Account Maintenance</option>
-                <option>Aftersales Account Migration</option>
-                <option>Aftersales Bridge Mode Configuration</option>
-                <option>Aftersales Change Number</option>
-                <option>Aftersales Disconnection</option>
-                <option>Aftersales Migration</option>
-                <option>Aftersales Relocation</option>
-                <option>Aftersales Special Feature</option>
-                <option>Aftersales Supersedure</option>
-                <option>Aftersales Upgrade</option>
-                <option>Aftersales Downgrade</option>
-                <option>Aftersales New Application</option>
-              </select>
-            </div>
-        
-            <!-- Follow-up Beyond SLA -->
-            <div class="input-group subcategory-select" id="subcatBoh-FollowupBeyondSLA" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
-              <select class="form-select" id="subcategoryBoh-FollowupBeyondSLA">
-                <option value="" disabled selected>Select Subcategory</option>
-                <option>Repair Complex</option>
-                <option>Repair Data</option>
-                <option>Repair Voice</option>
-                <option>Repair Voice and Data</option>
-                <option>Repair WAR SR</option>
-                <option>Aftersales Reconnection from TD</option>
-                <option>Aftersales Reconnection from OP</option>
-                <option>Aftersales Account Maintenance</option>
-                <option>Aftersales Account Migration</option>
-                <option>Aftersales Bridge Mode Configuration</option>
-                <option>Aftersales Change Number</option>
-                <option>Aftersales Disconnection</option>
-                <option>Aftersales Migration</option>
-                <option>Aftersales Relocation</option>
-                <option>Aftersales Special Feature</option>
-                <option>Aftersales Supersedure</option>
-                <option>Aftersales Upgrade</option>
-                <option>Aftersales Downgrade</option>
-                <option>Aftersales New Application</option>
-              </select>
-            </div>
-        
+
             <!-- Billing -->
-            <div class="input-group subcategory-select" id="subcatBoh-Billing" style="display: none;">
-              <span class="input-group-text fw-bold">Subcategory<div class="required-asterisk">*</div></span>
+            <div
+              class="input-group subcategory-select"
+              id="subcatBoh-Billing"
+              style="display: none"
+            >
+              <span class="input-group-text fw-bold"
+                >Subcategory
+                <div class="required-asterisk">*</div></span
+              >
               <select class="form-select" id="subcategoryBoh-Billing">
                 <option value="" disabled selected>Select Subcategory</option>
-                <option>Billing Inq Account Balance</option>
-                <option>Billing Inq BOL</option>
-                <option>Billing Inq Tolls</option>
-                <option>Other Billing Inquiry</option>
-                <option>Payment Details/Posting</option>
                 <option>Bill Delivery Dispute</option>
+                <option>Bills On Line</option>
                 <option>MRC/NRC</option>
                 <option>Payment (Unreflected/Misapplied )</option>
                 <option>Rebate (Non Service)</option>
-                <option>Non-receipt of Billing Invoice (BI)</option>
-                <option>BOL/e PORTAL ISSUE cant access</option>
-                <option>BOL/e PORTAL ISSUE  BI not visible</option>
-                <option>BOL/e PORTAL ISSUE cannot download BI</option>
-                <option>BOL/e PORTAL ISSUE payment module error</option>
+                <option>Tolls/Other Charges</option>
+                <option>Other Bill Concern</option>
+                <option>Balance Transfer</option>
+                <option>Refund</option>
+                <option>SOA Request</option>
               </select>
             </div>
           </div>
-        </div>        
-
+        </div>
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Action</span>
           <textarea class="form-control" id="actionTakenBoh"></textarea>
         </div>
       </div>
+
       <div class="d-flex justify-content-center gap-5 mt-5 flex-wrap">
         <button
           type="button"
@@ -1277,6 +1333,15 @@
           Standard Note
         </button>
         <button
+          id="fullBtn"
+          type="button"
+          class="btn btn-primary btn-lg"
+          onclick="console.log('Full Note Button Clicked'); generateNote('full')"
+        >
+          Full Note
+        </button>
+        <button
+          id="cepBtn"
           type="button"
           class="btn btn-primary btn-lg"
           onclick="console.log('CEP Note Button Clicked'); generateNote('cep')"
@@ -1284,18 +1349,14 @@
           CEP Note
         </button>
         <button
+          id="descBtn"
           type="button"
           class="btn btn-primary btn-lg"
           onclick="console.log('Description Note Button Clicked'); generateNote('description')"
         >
           Description Note
         </button>
-        <button
-        id="resetBtn"
-          type="button"
-          class="btn btn-primary btn-lg"
-          
-        >
+        <button id="resetBtn" type="button" class="btn btn-primary btn-lg">
           Reset
         </button>
       </div>
