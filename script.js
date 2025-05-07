@@ -86,8 +86,7 @@ function getRequiredFieldIds(channel) {
 
   if (channel === "SOCIAL MEDIA - CND") {
     requiredFields.push(
-      "caseNumberSM", "sfdcCaseNoSM", "receivedDateSM", "fromSM",
-      "cepNumberSM", "billingAccountSM", "customerAccountSM",
+      "caseNumberSM", "receivedDateSM", "fromSM", "billingAccountSM", "customerAccountSM",
       "accountNameSM", "serviceIdSM", "industryGroupSM",
       "concernSM"
     );
@@ -99,8 +98,8 @@ function getRequiredFieldIds(channel) {
     }
   } else if (channel === "HOTLINE - CND") {
     requiredFields.push(
-      "caseNumberHL", "sfdcCaseNoHL", "cepNumberHL",
-      "billingAccountHL", "customerAccountHL", "accountNameHL",
+      "caseNumberHL",
+      "billingAccountHL", "accountNameHL",
       "serviceIdHL", "industryGroupHL", "concernHL"
     );
 
@@ -188,11 +187,10 @@ function generateNote(type) {
       note = `ANI: ${aniSM}\nSFDC Case No: ${sfdcCaseNoSM}\nCEP Number: ${cepNumberSM}\nReceived thru Enterprise SocMed Dated: ${receivedDateSM}\nFrom: ${fromSM}\nCustomer Account: ${customerAccountSM}\nBilling Account: ${billingAccountSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nIndustry Group: ${industryGroupSM}\nConcern: ${concernSM}\nAction: ${actionSM}`;
     } else if (type === "full") {
       note = `ANI: ${aniSM}\nSFDC Case No: ${sfdcCaseNoSM}\nCEP Number: ${cepNumberSM}\nCustomer Account: ${customerAccountSM}\nBilling Account: ${billingAccountSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nIndustry Group: ${industryGroupSM}\nConcern: ${concernSM}\nComplaint/WOCAS: ${wocasSM}\nContact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nEmail Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nAvailability: ${availabilitySM}\nWorking Permit: ${workingPermitSM}\nONU Serial Number: ${onuSerialSM}\nONU Light Status: ${onuStatusSM}\nParent Ticket Number: ${parentTicketSM}\nClearview Test Result: ${clearviewTestResultSM}\nRequired Action: ${requiredActionSM}\nFLM Troubleshooting: ${flmSM}\nAction: ${actionSM}`;
-
     } else if (type === "cep") {
-      note = `CONTACT CHANNEL-VENDOR: ${contactChannelSM}\nSFDC CASE NO: ${sfdcCaseNoSM}\nnADDITIONAL CONTACT PERSON: ${aOCPSM}\nADDITIONAL CONTACT NUMBER: ${aOCNSM}\nWORKING PERMIT: ${workingPermitSM}\nAVAILABILITY DAY AND TIME: ${availabilitySM}\nCLEARVIEW TEST RESULT: ${clearviewTestResultSM}\nCOMPLAINT/WOCAS: ${wocasSM}\nREQUIRED ACTION: ${requiredActionSM}\nONU SERIAL NUMBER: ${onuSerialSM}\nONU LIGHT STATUS: ${onuStatusSM}\nFLM TROUBLESHOOTING: ${flmSM}\nPARENT TICKET: ${parentTicketSM}\nACTION: ${actionSM}`;
+      note = `CONTACT CHANNEL-VENDOR: ${contactChannelSM}\nSFDC CASE NO: ${sfdcCaseNoSM}\nCONTACT PERSON: ${contactPerSM}\nCONTACT NUMBER: ${contactNumSM}\nEMAIL ADDRESS: ${emailAddressSM}\nADDITIONAL CONTACT PERSON: ${aOCPSM}\nADDITIONAL CONTACT NUMBER: ${aOCNSM}\nWORKING PERMIT: ${workingPermitSM}\nAVAILABILITY DAY AND TIME: ${availabilitySM}\nCLEARVIEW TEST RESULT: ${clearviewTestResultSM}\nCOMPLAINT/WOCAS: ${wocasSM}\nREQUIRED ACTION: ${requiredActionSM}\nONU SERIAL NUMBER: ${onuSerialSM}\nONU LIGHT STATUS: ${onuStatusSM}\nFLM TROUBLESHOOTING: ${flmSM}\nPARENT TICKET: ${parentTicketSM}\nACTION: ${actionSM}`;
     } else if (type === "description") {
-      note = `Contact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nEmail Address: ${emailAddressSM}\nAdditional Onsite Contact Person: ${aOCPSM}\nAdditional Onsite Contact Number: ${aOCNSM}\nAvailability Day and Time: ${availabilitySM}\nWorking Permit: ${workingPermitSM}`;
+      note = `Concern: ${concernSM}\nContact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nEmail Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nAvailability Day and Time: ${availabilitySM}\nWorking Permit: ${workingPermitSM}`;
     }
   } else if (channel === "HOTLINE - CND") {
     const contactChannelHL = channel;
@@ -237,15 +235,13 @@ function generateNote(type) {
     const actionHL = document.getElementById("actionTakenHL")?.value || "";
 
     if (type === "standard") {
-      /*note = `ANI: ${aniHL}\nSFDC Case No: ${sfdcCaseNoHL}\nCEP Number: ${cepNumberHL}\nCustomer Account: ${customerAccountHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nAction: ${actionHL}`;*/
-
       note = `ANI: ${aniHL}\nBilling Account: ${billingAccountHL}\nService ID: ${serviceIdHL}\nConcern: ${concernHL}\nComplaint/WOCAS: ${wocasHL}\nAction: ${actionHL}`;
     } else if (type === "full") {
       note = `ANI: ${aniHL}\nSFDC Case No: ${sfdcCaseNoHL}\nCEP Number: ${cepNumberHL}\nCustomer Account: ${customerAccountHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nComplaint/WOCAS: ${wocasHL}\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Contact Person: ${aOCPHL}\nAdditional Contact Number: ${aOCNHL}\nAvailability: ${availabilityHL}\nWorking Permit: ${workingPermitHL}\nONU Serial Number: ${onuSerialHL}\nONU Light Status: ${onuStatusHL}\nParent Ticket Number: ${parentTicketHL}\nClearview Test Result: ${clearviewTestResultHL}\nRequired Action: ${requiredActionHL}\nFLM Troubleshooting: ${flmHL}\nAction: ${actionHL}`;
     } else if (type === "cep") {
-      note = `CONTACT CHANNEL-VENDOR: ${contactChannelHL}\nSFDC CASE NO: ${sfdcCaseNoHL}\nAdditional CONTACT PERSON: ${aOCPHL}\nAdditional CONTACT NUMBER: ${aOCNHL}\nWORKING PERMIT: ${workingPermitHL}\nAVAILABILITY DAY AND TIME: ${availabilityHL}\nCLEARVIEW TEST RESULT: ${clearviewTestResultHL}\nCOMPLAINT/WOCAS: ${wocasHL}\nREQUIRED ACTION: ${requiredActionHL}\nONU SERIAL NUMBER: ${onuSerialHL}\nONU LIGHT STATUS: ${onuStatusHL}\nFLM TROUBLESHOOTING: ${flmHL}\nPARENT TICKET: ${parentTicketHL}\nACTION: ${actionHL}`;
+      note = `CONTACT CHANNEL-VENDOR: ${contactChannelHL}\nSFDC CASE NO: ${sfdcCaseNoHL}\nCONTACT PERSON: ${contactPerHL}\nCONTACT NUMBER: ${contactNumHL}\nEMAIL ADDRESS: ${emailAddressHL}\nAdditional CONTACT PERSON: ${aOCPHL}\nAdditional CONTACT NUMBER: ${aOCNHL}\nWORKING PERMIT: ${workingPermitHL}\nAVAILABILITY DAY AND TIME: ${availabilityHL}\nCLEARVIEW TEST RESULT: ${clearviewTestResultHL}\nCOMPLAINT/WOCAS: ${wocasHL}\nREQUIRED ACTION: ${requiredActionHL}\nONU SERIAL NUMBER: ${onuSerialHL}\nONU LIGHT STATUS: ${onuStatusHL}\nFLM TROUBLESHOOTING: ${flmHL}\nPARENT TICKET: ${parentTicketHL}\nACTION: ${actionHL}`;
     } else if (type === "description") {
-      note = `Contact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Onsite Contact Person: ${aOCPHL}\nAdditional Onsite Contact Number: ${aOCNHL}\nAvailability Day and Time: ${availabilityHL}\nWorking Permit: ${workingPermitHL}`;
+      note = `Concern: ${concernHL}\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Onsite Contact Person: ${aOCPHL}\nAdditional Onsite Contact Number: ${aOCNHL}\nAvailability Day and Time: ${availabilityHL}\nWorking Permit: ${workingPermitHL}`;
     }
   } if (channel === "BOH - CND") {
     const billingAccountBoh = document.getElementById("billingAccountBoh")?.value || "";
