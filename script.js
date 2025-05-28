@@ -1,9 +1,52 @@
+window.addEventListener("DOMContentLoaded", () => {
+  
+  document.querySelectorAll(".contactForm").forEach((form) => {
+    form.style.display = "none";
+  });
+
+  
+  ["fullBtn", "cepBtn", "descBtn", "specBtn", "stdBtn", "abcaBtn", "resetBtn"].forEach((id) => {
+    const btn = document.getElementById(id);
+    if (btn) btn.style.display = "none";
+  });
+
+  
+  const contactChannelDropdown = document.getElementById("contactChannel");
+  if (contactChannelDropdown) {
+    contactChannelDropdown.addEventListener("change", toggleFormSections);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const outageSelect = document.getElementById("outageCheckHL");
+  const parentTicketInput = document.getElementById("parentTicketHL");
+
+  outageSelect.addEventListener("change", function () {
+    if (this.value === "No") {
+      parentTicketInput.value = "N/A";
+      parentTicketInput.readOnly = true;
+    } else if (this.value === "Yes") {
+      parentTicketInput.value = "";
+      parentTicketInput.readOnly = false;
+    }
+  });
+});
+
 function toggleFormSections() {
   const contactChannel = document.getElementById("contactChannel").value;
   const allForms = document.querySelectorAll(".contactForm");
+
   allForms.forEach((form) => {
     form.style.display = "none";
   });
+
+  const allButtons = ["fullBtn", "cepBtn", "descBtn", "specBtn", "stdBtn", "resetBtn", "abcaBtn"];
+  allButtons.forEach((id) => {
+    const btn = document.getElementById(id);
+    if (btn) btn.style.display = "none";
+  });
+
+  if (!contactChannel) return; 
 
   if (contactChannel === "BOH - CND") {
     document.getElementById("bohForm").style.display = "block";
@@ -13,17 +56,30 @@ function toggleFormSections() {
     document.getElementById("hotlineForm").style.display = "block";
   }
 
-  const hideLongButtons = contactChannel === "BOH - CND";
-  ["fullBtn", "cepBtn", "descBtn"].forEach((id) => {
+  if (contactChannel === "BOH - CND") {
+    document.getElementById("bohForm").style.display = "block";
+
+    showButtons(["stdBtn", "resetBtn"]);
+  } else if (contactChannel === "SOCIAL MEDIA - CND") {
+    document.getElementById("socialMediaForm").style.display = "block";
+
+    showButtons(["stdBtn", "cepBtn", "descBtn", "specBtn", "resetBtn"]);
+  } else if (contactChannel === "HOTLINE - CND") {
+    document.getElementById("hotlineForm").style.display = "block";
+
+    showButtons(["abcaBtn", "fullBtn", "cepBtn", "descBtn", "specBtn", "resetBtn"]);
+  }
+}
+
+  function showButtons(buttonIds) {
+  buttonIds.forEach((id) => {
     const btn = document.getElementById(id);
-    if (btn) btn.style.display = hideLongButtons ? "none" : "inline-flex";
+    if (btn) btn.style.display = "inline-flex";
   });
 }
 
 function handleCustomReset(evt) {
   if (evt) evt.preventDefault();
-
-  const currentChannel = document.getElementById("contactChannel").value;
 
   document.querySelectorAll(".contactForm").forEach((form) => {
     form.querySelectorAll("input, select, textarea").forEach((el) => {
@@ -171,6 +227,16 @@ function generateNote(type) {
   let note = "";
 
   if (channel === "SOCIAL MEDIA - CND") {
+    const outageDropdown = document.getElementById("outageCheckSM");
+    const parentTicketInput = document.getElementById("parentTicketSM");
+
+    if (outageDropdown?.value === "No") {
+      parentTicketInput.value = "N/A";
+      parentTicketInput.readOnly = true;
+    } else {
+      parentTicketInput.readOnly = false; 
+    }
+
     const contactChannelSM = channel;
     const aniSM = document.getElementById("caseNumberSM")?.value || "";
     const sfdcCaseNoSM = document.getElementById("sfdcCaseNoSM")?.value || "";
@@ -205,6 +271,8 @@ function generateNote(type) {
       concernSM = concernSMMain;
     }
     const wocasSM = document.getElementById("wocasSM")?.value || "";
+    const reportedPerSM = document.getElementById("reportedPerSM")?.value || "";
+    const reportedConSM = document.getElementById("reportedConSM")?.value || "";
     const contactPerSM = document.getElementById("contactPerSM")?.value || "";
     const contactNumSM = document.getElementById("contactNumSM")?.value || "";
     const emailAddressSM =
@@ -214,28 +282,40 @@ function generateNote(type) {
     const availabilitySM =
       document.getElementById("availabilitySM")?.value || "";
     const workingPermitSM =
-      document.getElementById("workingPermitSM")?.value || "";
+      document.getElementById("workingPermitSM")?.value || "N/A";
     const requiredActionSM =
-      document.getElementById("requiredActionSM")?.value || "";
+      document.getElementById("requiredActionSM")?.value || "N/A";
     const onuSerialSM = document.getElementById("onuSerialSM")?.value || "";
-    const onuStatusSM = document.getElementById("onuStatusSM")?.value || "";
+    const onuStatusSM = document.getElementById("onuStatusSM")?.value || "N/A";
     const parentTicketSM =
-      document.getElementById("parentTicketSM")?.value || "";
+      document.getElementById("parentTicketSM")?.value || "N/A";
+    const outageCheckSM =
+      document.getElementById("outageCheckSM")?.value || "No";
     const clearviewTestResultSM =
       document.getElementById("testResultSM")?.value || "";
     const flmSM = document.getElementById("flmSM")?.value || "";
     const actionSM = document.getElementById("actionTakenSM")?.value || "";
 
     if (type === "standard") {
-      note = `Case Number: ${aniSM}\nCEP Number: ${cepNumberSM}\nSFDC Case No: ${sfdcCaseNoSM}\nReceived thru Enterprise SocMed Dated: ${receivedDateSM}\nFrom: ${fromSM}\nCustomer Account: ${customerAccountSM}\nBilling Account: ${billingAccountSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nIndustry Group: ${industryGroupSM}\nConcern: ${concernSM}\nAction: ${actionSM}`;
-    } else if (type === "full") {
-      note = `Case Number: ${aniSM}\nCEP Number: ${cepNumberSM}\nSFDC Case No: ${sfdcCaseNoSM}\nCustomer Account: ${customerAccountSM}\nBilling Account: ${billingAccountSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nIndustry Group: ${industryGroupSM}\nConcern: ${concernSM}\nComplaint/WOCAS: ${wocasSM}\nContact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nEmail Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nAvailability: ${availabilitySM}\nWorking Permit: ${workingPermitSM}\nONU Serial Number: ${onuSerialSM}\nONU Light Status: ${onuStatusSM}\nParent Ticket Number: ${parentTicketSM}\nClearview Test Result: ${clearviewTestResultSM}\nRequired Action: ${requiredActionSM}\nFLM Troubleshooting: ${flmSM}\nAction: ${actionSM}`;
+      note = `Case Number: ${aniSM}\nCEP Case No/Fault Ticket No: ${cepNumberSM}\nSFDC Case No: ${sfdcCaseNoSM}\nReceived thru Enterprise SocMed Dated: ${receivedDateSM}\nFrom (Social Persona): ${fromSM}\nCustomer Account Number: ${customerAccountSM}\nBilling Account Number: ${billingAccountSM}\nIndustry Group: ${industryGroupSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nConcern: ${concernSM}\nAction Taken: ${actionSM}`;
+    } else if (type === "special") {
+      note = `Contact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nContact Email Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nAvailable Date and Time: ${availabilitySM}\nWorking Permit: ${workingPermitSM}\nReported Contact Person: ${reportedPerSM}\nReported Contact Number: ${reportedConSM}`;
     } else if (type === "cep") {
-      note = `CONTACT CHANNEL-VENDOR: ${contactChannelSM}\nSFDC CASE NO: ${sfdcCaseNoSM}\nCONTACT PERSON: ${contactPerSM}\nCONTACT NUMBER: ${contactNumSM}\nEMAIL ADDRESS: ${emailAddressSM}\nADDITIONAL CONTACT PERSON: ${aOCPSM}\nADDITIONAL CONTACT NUMBER: ${aOCNSM}\nWORKING PERMIT: ${workingPermitSM}\nAVAILABILITY DAY AND TIME: ${availabilitySM}\nCLEARVIEW TEST RESULT: ${clearviewTestResultSM}\nCOMPLAINT/WOCAS: ${wocasSM}\nACTION: ${actionSM}\n\nREQUIRED ACTION: ${requiredActionSM}\nONU SERIAL NUMBER: ${onuSerialSM}\nONU LIGHT STATUS: ${onuStatusSM}\nFLM TROUBLESHOOTING: ${flmSM}\nPARENT TICKET: ${parentTicketSM}`;
+      note = `CONTACT CHANNEL-VENDOR: ${contactChannelSM}\nSFDC Case No: ${sfdcCaseNoSM}\nContact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nContact Email Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nWorking Permit: ${workingPermitSM}\nAvailable Date and Time: ${availabilitySM}\nSerial Number: ${onuSerialSM}\nIs there a Parent Ticket: ${outageCheckSM}\nParent Ticket: ${parentTicketSM}\nONU Light Status: ${onuStatusSM}\nFLM Troubleshooting: ${flmSM}\nClearview Test Result: ${clearviewTestResultSM}\nRequired Action: ${requiredActionSM}\nWOCAS: ${wocasSM}\nAction Taken: ${actionSM}`;
     } else if (type === "description") {
-      note = `Concern: ${concernSM}\nContact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nEmail Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nAvailability Day and Time: ${availabilitySM}\nWorking Permit: ${workingPermitSM}`;
+      note = `Concern: ${concernSM}\n\nContact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nContact Email Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nAvailability Day and Time: ${availabilitySM}\nWorking Permit: ${workingPermitSM}`;
     }
   } else if (channel === "HOTLINE - CND") {
+    const outageDropdown = document.getElementById("outageCheckHL");
+    const parentTicketInput = document.getElementById("parentTicketHL");
+
+    if (outageDropdown?.value === "No") {
+      parentTicketInput.value = "N/A";
+      parentTicketInput.readOnly = true;
+    } else {
+      parentTicketInput.readOnly = false; 
+    }
+
     const contactChannelHL = channel;
     const aniHL = document.getElementById("caseNumberHL")?.value || "";
     const sfdcCaseNoHL = document.getElementById("sfdcCaseNoHL")?.value || "";
@@ -276,26 +356,30 @@ function generateNote(type) {
     const availabilityHL =
       document.getElementById("availabilityHL")?.value || "";
     const workingPermitHL =
-      document.getElementById("workingPermitHL")?.value || "";
+      document.getElementById("workingPermitHL")?.value || "N/A";
     const requiredActionHL =
-      document.getElementById("requiredActionHL")?.value || "";
+      document.getElementById("requiredActionHL")?.value || "N/A";
     const onuSerialHL = document.getElementById("onuSerialHL")?.value || "";
-    const onuStatusHL = document.getElementById("onuStatusHL")?.value || "";
+    const onuStatusHL = document.getElementById("onuStatusHL")?.value || "N/A";
     const parentTicketHL =
-      document.getElementById("parentTicketHL")?.value || "";
+      document.getElementById("parentTicketHL")?.value || "N/A";
+    const outageCheckHL =
+      document.getElementById("outageCheckHL")?.value || "No";
     const flmHL = document.getElementById("flmHL")?.value || "";
     const clearviewTestResultHL =
       document.getElementById("testResultHL")?.value || "";
     const actionHL = document.getElementById("actionTakenHL")?.value || "";
 
-    if (type === "standard") {
-      note = `ANI: ${aniHL}\nBilling Account: ${billingAccountHL}\nService ID: ${serviceIdHL}\nConcern: ${concernHL}\nComplaint/WOCAS: ${wocasHL}\nAction: ${actionHL}`;
+    if (type === "abca") {
+      note = `ANI: ${aniHL}\nBilling Account Number: ${billingAccountHL}\nService ID: ${serviceIdHL}\nConcern: ${concernHL}\nWOCAS: ${wocasHL}\nAction: ${actionHL}`;
     } else if (type === "full") {
-      note = `ANI: ${aniHL}\nCEP Number: ${cepNumberHL}\nSFDC Case No: ${sfdcCaseNoHL}\nBilling Account: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nComplaint/WOCAS: ${wocasHL}\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Contact Person: ${aOCPHL}\nAdditional Contact Number: ${aOCNHL}\nAvailability: ${availabilityHL}\nWorking Permit: ${workingPermitHL}\nONU Serial Number: ${onuSerialHL}\nONU Light Status: ${onuStatusHL}\nParent Ticket Number: ${parentTicketHL}\nClearview Test Result: ${clearviewTestResultHL}\nRequired Action: ${requiredActionHL}\nFLM Troubleshooting: ${flmHL}\nAction: ${actionHL}`;
+      note = `ANI: ${aniHL}\nCEP Case No/Fault Ticket No: ${cepNumberHL}\nSFDC Case No: ${sfdcCaseNoHL}\nBilling Account Number: ${billingAccountHL}\nAccount Name: ${accountNameHL}\nService ID: ${serviceIdHL}\nIndustry Group: ${industryGroupHL}\nConcern: ${concernHL}\nComplaint/WOCAS: ${wocasHL}\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Contact Person: ${aOCPHL}\nAdditional Contact Number: ${aOCNHL}\nAvailability Day and Time: ${availabilityHL}\nWorking Permit: ${workingPermitHL}\nONU Serial Number: ${onuSerialHL}\nONU Light Status: ${onuStatusHL}\nIs there a Parent Ticket: ${outageCheckHL}\nParent Ticket Number: ${parentTicketHL}\nClearview Test Result: ${clearviewTestResultHL}\nRequired Action: ${requiredActionHL}\nFLM Troubleshooting: ${flmHL}\nAction Taken: ${actionHL}`;
     } else if (type === "cep") {
-      note = `CONTACT CHANNEL-VENDOR: ${contactChannelHL}\nSFDC CASE NO: ${sfdcCaseNoHL}\nCONTACT PERSON: ${contactPerHL}\nCONTACT NUMBER: ${contactNumHL}\nEMAIL ADDRESS: ${emailAddressHL}\nAdditional CONTACT PERSON: ${aOCPHL}\nAdditional CONTACT NUMBER: ${aOCNHL}\nWORKING PERMIT: ${workingPermitHL}\nAVAILABILITY DAY AND TIME: ${availabilityHL}\nCLEARVIEW TEST RESULT: ${clearviewTestResultHL}\nCOMPLAINT/WOCAS: ${wocasHL}\nREQUIRED ACTION: ${requiredActionHL}\nONU SERIAL NUMBER: ${onuSerialHL}\nONU LIGHT STATUS: ${onuStatusHL}\nFLM TROUBLESHOOTING: ${flmHL}\nPARENT TICKET: ${parentTicketHL}\nACTION: ${actionHL}`;
+      note = `CONTACT CHANNEL-VENDOR: ${contactChannelHL}\nSFDC Case No: ${sfdcCaseNoHL}\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nContact Email Address: ${emailAddressHL}\nAdditional Contact Person: ${aOCPHL}\nAdditional Contact Number: ${aOCNHL}\nWorking Permit: ${workingPermitHL}\nAvailable Day and Time: ${availabilityHL}\nClearview Test Result: ${clearviewTestResultHL}\nWOCAS: ${wocasHL}\nRequired Action: ${requiredActionHL}\nONU Serial Number: ${onuSerialHL}\nONU Light Status: ${onuStatusHL}\nFLM Troubleshooting: ${flmHL}\nIs there a Parent Ticket: ${outageCheckHL}\nParent Ticket Number: ${parentTicketHL}\nAdditional Remarks: ${actionHL}`;
     } else if (type === "description") {
-      note = `Concern: ${concernHL}\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Onsite Contact Person: ${aOCPHL}\nAdditional Onsite Contact Number: ${aOCNHL}\nAvailability Day and Time: ${availabilityHL}\nWorking Permit: ${workingPermitHL}`;
+      note = `Concern: ${concernHL}\n\nContact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Onsite Contact Person: ${aOCPHL}\nAdditional Onsite Contact Number: ${aOCNHL}\nAvailability Day and Time: ${availabilityHL}\nWorking Permit: ${workingPermitHL}`;
+    } else if (type === "special") {
+      note = `Contact Person: ${contactPerHL}\nContact Number: ${contactNumHL}\nEmail Address: ${emailAddressHL}\nAdditional Contact Person: ${aOCPHL}\nAdditional Contact Number: ${aOCNHL}\nWorking Permit: ${workingPermitHL}\nAvailable Date and Time: ${availabilityHL}`;
     }
   }
   if (channel === "BOH - CND") {
@@ -329,7 +413,7 @@ function generateNote(type) {
       document.getElementById("actionTakenBoh")?.value || "";
 
     if (type === "standard") {
-      note = `Account Name: ${accountNameBoh}\nCustomer Account: ${customerAccountBoh}\nBilling Account: ${billingAccountBoh}\nService ID: ${serviceIdBoh}\nConcern: ${concernBoh}\nAction: ${actionTakenBoh}`;
+      note = `Account Name: ${accountNameBoh}\nCustomer Account Number: ${customerAccountBoh}\nBilling Account Number: ${billingAccountBoh}\nService ID: ${serviceIdBoh}\nConcern: ${concernBoh}\nAction Taken: ${actionTakenBoh}`;
     }
   }
 

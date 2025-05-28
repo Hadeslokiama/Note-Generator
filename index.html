@@ -29,13 +29,7 @@
     <header>
       <h1 class="text-center fw-bold">Note Generator</h1>
     </header>
-    <div class="container text-center mb-4" id="disclaimer">
-      <p>
-        This website is for generating notes. Fill out the form below to
-        generate your note. All fields with * are required to be filled out and
-        put N/A for details unable to acquire from the customer.
-      </p>
-    </div>
+
 
     <section>
       <!-- Contact Channel Selection -->
@@ -459,10 +453,30 @@
         <hr class="my-3 opacity-75" />
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Complaint/WOCAS </span>
+          <span class="input-group-text fw-bold">WOCAS </span>
           <textarea class="form-control" id="wocasSM"></textarea>
         </div>
 
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Reported Contact Person </span>
+          <input
+            type="text"
+            class="form-control"
+            id="reportedPerSM"
+            placeholder="John Doe"
+          />
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Reported Contact Number </span>
+          <input
+            type="text"
+            class="form-control"
+            id="reportedNumSM"
+            placeholder="09xxxxxxxxx"
+          />
+        </div>
+        <hr class="my-3 opacity-75" />
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Contact Person </span>
           <input
@@ -532,7 +546,7 @@
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Working Permit </span>
           <select class="form-select" id="workingPermitSM">
-            <option selected disabled>Select</option>
+            <option value="" disabled selected>Select</option>
             <option value="N/A">N/A</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -553,14 +567,23 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">ONU Light Status </span>
-          <input
-            type="text"
-            class="form-control"
-            id="onuStatusSM"
-            placeholder="Status"
-          />
+          <select class="form-select" id="onuStatusSM">
+            <option value="" disabled selected>Select</option>
+            <option value="N/A">N/A</option>
+            <option value="Blinking">Blinking</option>
+            <option value="Red LOS">Red LOS</option>
+            <option value="No Visible Lights">No Visible Lights</option>
+            <option value="For Verification">For Verification</option>
+          </select>
         </div>
-
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Is there a Parent Ticket</span>
+          <select class="form-select" id="outageCheckSM">
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Parent Ticket Number</span>
           <input
@@ -570,21 +593,15 @@
             placeholder="00000XXXXXX"
           />
         </div>
-
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Clearview Test Result </span>
-          <input
-            type="text"
-            class="form-control"
-            id="testResultSM"
-            placeholder="Result"
-          />
+          <textarea class="form-control" id="testResultSM"></textarea>
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Required Action</span>
           <select class="form-select" id="requiredActionSM">
-            <option selected disabled>Select</option>
+            <option value="" disabled selected>Select</option>
             <option value="N/A">N/A</option>
             <option value="Dispatched to Technician for Inside Checking">
               Dispatched to Technician for Inside Checking
@@ -592,7 +609,7 @@
             <option value="Dispatched to Technician for Outside Checking">
               Dispatched to Technician for Outside Checking
             </option>
-            <option value="Action Required L2">Action Required L2</option>
+            <option value="For IM Checking">For IM Checking</option>
             <option value="For FCR Checking">For FCR Checking</option>
             `
             <option value="For Network Checking">For Network Checking</option>
@@ -605,7 +622,7 @@
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Action</span>
+          <span class="input-group-text fw-bold">Action Taken</span>
           <textarea class="form-control" id="actionTakenSM"></textarea>
         </div>
       </div>
@@ -985,7 +1002,26 @@
           <span class="input-group-text fw-bold">Complaint/WOCAS </span>
           <textarea class="form-control" id="wocasHL"></textarea>
         </div>
+        <!--<div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Reported Contact Person </span>
+          <input
+            type="text"
+            class="form-control"
+            id="reportedPerHL"
+            placeholder="John Doe"
+          />
+        </div>
 
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Reported Contact Number </span>
+          <input
+            type="text"
+            class="form-control"
+            id="reportedNumHL"
+            placeholder="09xxxxxxxxx"
+          />
+        </div>
+        <hr class="my-3 opacity-75" />-->
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Contact Person </span>
           <input
@@ -1055,7 +1091,7 @@
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Working Permit </span>
           <select class="form-select" id="workingPermitHL">
-            <option selected disabled>Select</option>
+            <option value="" disabled selected>Select</option>
             <option value="N/A">N/A</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
@@ -1078,14 +1114,23 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">ONU Light Status </span>
-          <input
-            type="text"
-            class="form-control"
-            id="onuStatusHL"
-            placeholder="Status"
-          />
+          <select class="form-select" id="onuStatusHL">
+            <option value="" disabled selected>Select</option>
+            <option value="N/A">N/A</option>
+            <option value="Blinking">Blinking</option>
+            <option value="Red LOS">Red LOS</option>
+            <option value="No Visible Lights">No Visible Lights</option>
+            <option value="For Verification">For Verification</option>
+          </select>
         </div>
-
+        <div class="input-group mb-3">
+          <span class="input-group-text fw-bold">Part of Outage</span>
+          <select class="form-select" id="outageCheckHL">
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Parent Ticket Number</span>
           <input
@@ -1109,7 +1154,7 @@
         <div class="input-group mb-3">
           <span class="input-group-text fw-bold">Required Action</span>
           <select class="form-select" id="requiredActionHL">
-            <option selected disabled>Select</option>
+            <option value="" disabled selected>Select</option>
             <option value="N/A">N/A</option>
             <option value="Dispatched to Technician for Inside Checking">
               Dispatched to Technician for Inside Checking
@@ -1117,7 +1162,7 @@
             <option value="Dispatched to Technician for Outside Checking">
               Dispatched to Technician for Outside Checking
             </option>
-            <option value="Action Required L2">Action Required L2</option>
+            <option value="For IM Checking">For IM Checking</option>
             <option value="For FCR Checking">For FCR Checking</option>
             <option value="For Network Checking">For Network Checking</option>
           </select>
@@ -1129,7 +1174,7 @@
         </div>
 
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Action</span>
+          <span class="input-group-text fw-bold">Action Taken</span>
           <textarea class="form-control" id="actionTakenHL"></textarea>
         </div>
       </div>
@@ -1304,18 +1349,27 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text fw-bold">Action</span>
+          <span class="input-group-text fw-bold">Additional Remarks</span>
           <textarea class="form-control" id="actionTakenBoh"></textarea>
         </div>
       </div>
 
       <div class="d-flex justify-content-center gap-5 mt-5 flex-wrap">
         <button
+          id="stdBtn"
           type="button"
-          class="btn btn-primary btn-lg"
+          class="btn btn-warning btn-lg"
           onclick="console.log('Standard Note Button Clicked'); generateNote('standard')"
         >
           Standard Note
+        </button>
+        <button
+          id="abcaBtn"
+          type="button"
+          class="btn btn-warning btn-lg"
+          onclick="console.log('ABCA Note Button Clicked'); generateNote('abca')"
+        >
+          ABCA
         </button>
         <button
           id="fullBtn"
@@ -1325,6 +1379,7 @@
         >
           All Note
         </button>
+
         <button
           id="cepBtn"
           type="button"
@@ -1341,7 +1396,15 @@
         >
           Description Note
         </button>
-        <button id="resetBtn" type="button" class="btn btn-primary btn-lg">
+        <button
+          id="specBtn"
+          type="button"
+          class="btn btn-primary btn-lg"
+          onclick="console.log('Special Note Button Clicked'); generateNote('special')"
+        >
+          Special Note
+        </button>
+        <button id="resetBtn" type="button" class="btn btn-danger btn-lg">
           Reset
         </button>
       </div>
