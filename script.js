@@ -282,13 +282,13 @@ function generateNote(type) {
     const availabilitySM =
       document.getElementById("availabilitySM")?.value || "";
     const workingPermitSM =
-      document.getElementById("workingPermitSM")?.value || "N/A";
+      document.getElementById("workingPermitSM")?.value || "NA";
     const requiredActionSM =
-      document.getElementById("requiredActionSM")?.value || "N/A";
+      document.getElementById("requiredActionSM")?.value || "NA";
     const onuSerialSM = document.getElementById("onuSerialSM")?.value || "";
-    const onuStatusSM = document.getElementById("onuStatusSM")?.value || "N/A";
+    const onuStatusSM = document.getElementById("onuStatusSM")?.value || "NA";
     const parentTicketSM =
-      document.getElementById("parentTicketSM")?.value || "N/A";
+      document.getElementById("parentTicketSM")?.value || "NA";
     const outageCheckSM =
       document.getElementById("outageCheckSM")?.value || "No";
     const clearviewTestResultSM =
@@ -297,7 +297,7 @@ function generateNote(type) {
     const actionSM = document.getElementById("actionTakenSM")?.value || "";
 
     if (type === "standard") {
-      note = `Case Number: ${aniSM}\nCEP Case No/Fault Ticket No: ${cepNumberSM}\nSFDC Case No: ${sfdcCaseNoSM}\nReceived thru Enterprise SocMed Dated: ${receivedDateSM}\nFrom (Social Persona): ${fromSM}\nCustomer Account Number: ${customerAccountSM}\nBilling Account Number: ${billingAccountSM}\nIndustry Group: ${industryGroupSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nConcern: ${concernSM}\nAction Taken: ${actionSM}`;
+      note = `Case Number: ${aniSM}\nCEP Case No/Fault Ticket No: ${cepNumberSM}\nSFDC Case No: ${sfdcCaseNoSM}\nReceived thru Enterprise SocMed Dated: ${receivedDateSM}\nFrom (Social Persona): ${fromSM}\nCustomer Account Number: ${customerAccountSM}\nBilling Account Number: ${billingAccountSM}\nAccount Name: ${accountNameSM}\nService ID: ${serviceIdSM}\nIndustry Group: ${industryGroupSM}\nConcern: ${concernSM}\nAction Taken: ${actionSM}`;
     } else if (type === "special") {
       note = `Contact Person: ${contactPerSM}\nContact Number: ${contactNumSM}\nContact Email Address: ${emailAddressSM}\nAdditional Contact Person: ${aOCPSM}\nAdditional Contact Number: ${aOCNSM}\nAvailable Date and Time: ${availabilitySM}\nWorking Permit: ${workingPermitSM}\nReported Contact Person: ${reportedPerSM}\nReported Contact Number: ${reportedConSM}`;
     } else if (type === "cep") {
@@ -356,13 +356,13 @@ function generateNote(type) {
     const availabilityHL =
       document.getElementById("availabilityHL")?.value || "";
     const workingPermitHL =
-      document.getElementById("workingPermitHL")?.value || "N/A";
+      document.getElementById("workingPermitHL")?.value || "NA";
     const requiredActionHL =
-      document.getElementById("requiredActionHL")?.value || "N/A";
+      document.getElementById("requiredActionHL")?.value || "NA";
     const onuSerialHL = document.getElementById("onuSerialHL")?.value || "";
-    const onuStatusHL = document.getElementById("onuStatusHL")?.value || "N/A";
+    const onuStatusHL = document.getElementById("onuStatusHL")?.value || "NA";
     const parentTicketHL =
-      document.getElementById("parentTicketHL")?.value || "N/A";
+      document.getElementById("parentTicketHL")?.value || "NA";
     const outageCheckHL =
       document.getElementById("outageCheckHL")?.value || "No";
     const flmHL = document.getElementById("flmHL")?.value || "";
